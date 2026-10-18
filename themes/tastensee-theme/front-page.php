@@ -49,6 +49,7 @@
         </div>
       </section>
 
+      <!-- Cake Feauture Gallery -->
       <section class="section section--mint creations" id="cakes">
         <div class="page-shell">
           <div class="section-heading section-heading--row">
@@ -60,86 +61,38 @@
           </div>
 
           <div class="creations__grid creations__grid--custom">
+            <?php
+            $featured_cakes = new WP_Query( array(
+                'post_type' => 'cake',
+                'post_status' => 'publish',
+                'posts_per_page' => 10,
+                'no_found_rows' => true,
+                'orderby' => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+                'meta_query' => array(
+                    array( 'key' => '_tastensee_cake_featured', 'value' => '1' ),
+                    array( 'key' => '_thumbnail_id', 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ),
+                ),
+            ) );
+            while ( $featured_cakes->have_posts() ) : $featured_cakes->the_post();
+                $cake_terms = get_the_terms( get_the_ID(), 'cake_category' );
+                $category_label = is_array( $cake_terms ) ? implode( ', ', wp_list_pluck( $cake_terms, 'name' ) ) : __( 'Custom Cakes', 'tastensee' );
+                $image_id = get_post_thumbnail_id();
+                ?>
             <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Wedding" data-gallery-category="Custom Cakes" aria-label="View Wedding photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/cake-wedding.png' ) ); ?>" alt="Elegant white wedding cake" />
+              <button class="photo-modal-trigger" type="button"
+                data-gallery-title="<?php echo esc_attr( get_the_title() ); ?>"
+                data-gallery-category="<?php echo esc_attr( $category_label ); ?>"
+                data-gallery-image="<?php echo esc_url( wp_get_attachment_image_url( $image_id, 'full' ) ); ?>"
+                aria-label="<?php echo esc_attr( sprintf( __( 'View %s photo', 'tastensee' ), get_the_title() ) ); ?>"
+                aria-haspopup="dialog" aria-controls="gallery-modal">
+                <?php echo wp_get_attachment_image( $image_id, 'large', false, array( 'class' => 'product-card__image', 'alt' => get_post_meta( $image_id, '_wp_attachment_image_alt', true ) ?: get_the_title() ) ); ?>
               </button>
               <div class="product-card__body">
-                <h3 class="product-card__title">Wedding</h3>
-                <!-- <p class="product-card__price">Made for your day</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+                <h3 class="product-card__title"><?php the_title(); ?></h3>
+                <a class="product-card__link" href="<?php echo esc_url( home_url( '/consultation/' ) ); ?>">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
               </div>
             </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Birthday Buttercream" data-gallery-category="Custom Cakes" aria-label="View Birthday Buttercream photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-chocolate-rose-birthday.png' ) ); ?>" alt="Chocolate buttercream birthday cake with piped roses" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Birthday Buttercream</h3>
-                <!-- <p class="product-card__price">Soft, beautiful finishes</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Birthday Fondant" data-gallery-category="Custom Cakes" aria-label="View Birthday Fondant photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-hello-kitty-dream.png' ) ); ?>" alt="Custom fondant birthday cake" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Birthday Fondant</h3>
-                <!-- <p class="product-card__price">Bold custom creations</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Mom’s Cake" data-gallery-category="Custom Cakes" aria-label="View Mom’s Cake photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-pink-rose-garden.png' ) ); ?>" alt="Pink rose celebration cake for Mom" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Mom’s Cake</h3>
-                <!-- <p class="product-card__price">A sweet thank-you</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Dad’s Cake" data-gallery-category="Custom Cakes" aria-label="View Dad’s Cake photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-gold-white-elegance.png' ) ); ?>" alt="Gold and white celebration cake for Dad" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Dad’s Cake</h3>
-                <!-- <p class="product-card__price">Designed just for him</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Gender Reveal / Baby Shower" data-gallery-category="Custom Cakes" aria-label="View Gender Reveal / Baby Shower photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-pink-floral-dream.png' ) ); ?>" alt="Pastel celebration cake for a gender reveal or baby shower" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Gender Reveal / Baby Shower</h3>
-                <!-- <p class="product-card__price">Welcome something wonderful</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Retirement / Send Off" data-gallery-category="Custom Cakes" aria-label="View Retirement / Send Off photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-white-four-tier-classic.png' ) ); ?>" alt="Elegant retirement or send-off cake" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Retirement / Send Off</h3>
-                <!-- <p class="product-card__price">Celebrate the next chapter</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
-            <article class="product-card">
-              <button class="photo-modal-trigger" type="button" data-gallery-title="Religious" data-gallery-category="Custom Cakes" aria-label="View Religious photo" aria-haspopup="dialog" aria-controls="gallery-modal">
-                <img class="product-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-three-tier-candle-cake.png' ) ); ?>" alt="Tiered cake for a religious celebration" />
-              </button>
-              <div class="product-card__body">
-                <h3 class="product-card__title">Religious</h3>
-                <!-- <p class="product-card__price">Made for meaningful moments</p> -->
-                <a class="product-card__link" href="consultation.html">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-              </div>
-            </article>
+            <?php endwhile; wp_reset_postdata(); ?>
           </div>
         </div>
       </section>

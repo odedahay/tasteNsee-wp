@@ -4,6 +4,8 @@ The Cake Gallery lives at `/cakes/` and uses `archive-cake.php`. Manage entries 
 
 The post type and taxonomy are registered by `wp-content/mu-plugins/tastensee-cakes.php`, which WordPress loads automatically. Keep that file when deploying the theme. The gallery loop and card markup live in `archive-cake.php`. Upload images through **Cakes → Add New Cake → Set cake image** in WordPress admin; no sample import is required. Cakes without an image display a placeholder until you upload one.
 
+To show a cake under **Order a Custom Cake** on the homepage, check **Homepage feature → Featured on homepage** in its editor and save. The homepage displays up to 10 published featured cakes with images, sorted by Order and then title. If more than 10 are selected, the first 10 appear. The homepage uses `template-parts/home-creations.php` for this section.
+
 - `header.php` / `footer.php`: shared page shell with WordPress hooks.
 - `index.php`: basic WordPress content loop with the title and content.
 - `functions.php`: theme support and enqueued CSS/JavaScript.

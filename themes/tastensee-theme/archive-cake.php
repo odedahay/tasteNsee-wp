@@ -1,6 +1,9 @@
 <?php
 
 /** Cake post type archive. @package TasteNsee */
+/** @var WP_Query $wp_query */
+global $wp_query;
+
 get_header();
 $categories = get_terms(array('taxonomy' => 'cake_category', 'hide_empty' => true));
 if (is_wp_error($categories)) {

@@ -44,6 +44,43 @@ function tastensee_register_cakes() {
 }
 add_action( 'init', 'tastensee_register_cakes' );
 
+function tastensee_cake_featured_meta_box() {
+    add_meta_box(
+        'tastensee-cake-homepage',
+        __( 'Homepage feature', 'tastensee' ),
+        'tastensee_cake_featured_field',
+        'cake',
+        'side'
+    );
+}
+add_action( 'add_meta_boxes_cake', 'tastensee_cake_featured_meta_box' );
+
+function tastensee_cake_featured_field( $post ) {
+    wp_nonce_field( 'tastensee_save_cake_featured', 'tastensee_cake_featured_nonce' );
+    ?>
+    <label for="tastensee-cake-featured">
+        <input id="tastensee-cake-featured" type="checkbox" name="tastensee_cake_featured" value="1" <?php checked( get_post_meta( $post->ID, '_tastensee_cake_featured', true ), '1' ); ?> />
+        <?php esc_html_e( 'Featured on homepage', 'tastensee' ); ?>
+    </label>
+    <p><?php esc_html_e( 'Shows under “Order a Custom Cake”. Upload a cake image first. Up to 10 featured cakes appear, sorted by Order, then title.', 'tastensee' ); ?></p>
+    <?php
+}
+
+function tastensee_save_cake_featured( $post_id ) {
+    if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) || ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+    if ( ! isset( $_POST['tastensee_cake_featured_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tastensee_cake_featured_nonce'] ) ), 'tastensee_save_cake_featured' ) ) {
+        return;
+    }
+    if ( isset( $_POST['tastensee_cake_featured'] ) && '1' === $_POST['tastensee_cake_featured'] ) {
+        update_post_meta( $post_id, '_tastensee_cake_featured', '1' );
+    } else {
+        delete_post_meta( $post_id, '_tastensee_cake_featured' );
+    }
+}
+add_action( 'save_post_cake', 'tastensee_save_cake_featured' );
+
 function tastensee_cake_archive_query( $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( 'cake' ) ) {
         // Load the complete collection so category filters and counts agree.

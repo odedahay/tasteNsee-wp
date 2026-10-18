@@ -3,3 +3,6 @@
 
 # WordPress content directory index
 /index.php
+
+# macOS metadata in any directory
+.DS_Store

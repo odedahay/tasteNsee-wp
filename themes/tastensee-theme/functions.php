@@ -19,7 +19,7 @@ function tastensee_enqueue_assets() {
     wp_enqueue_style( 'tastensee-fonts', 'https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;500;600;700;800&display=swap', array(), null );
     wp_enqueue_style( 'remixicon', 'https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css', array(), '4.9.0' );
     wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css', array(), '12' );
-    wp_enqueue_style( 'tastensee', get_stylesheet_uri(), array( 'tastensee-fonts', 'remixicon', 'swiper' ), $version );
+    wp_enqueue_style( 'tastensee', get_stylesheet_uri(), array( 'tastensee-fonts', 'remixicon', 'swiper' ), (string) filemtime( get_stylesheet_directory() . '/style.css' ) );
     // Load the original design stylesheet when available.
     if ( file_exists( get_theme_file_path( 'styles.css' ) ) ) {
         wp_enqueue_style( 'tastensee-design', get_theme_file_uri( 'styles.css' ), array( 'tastensee' ), (string) filemtime( get_theme_file_path( 'styles.css' ) ) );
