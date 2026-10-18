@@ -1,0 +1,5 @@
+# WordPress media uploads
+/uploads/
+
+# WordPress content directory index
+/index.php
