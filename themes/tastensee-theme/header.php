@@ -21,7 +21,7 @@
 
     <header class="site-header" id="home">
       <div class="site-header__inner page-shell">
-        <a class="site-header__brand" href="<?php echo esc_url( home_url( '/#home' ) ); ?>" aria-label="tasteNsee home">
+        <a class="site-header__brand" href="<?php echo esc_url( home_url( '' ) ); ?>" aria-label="tasteNsee home">
           <img class="site-header__logo" src="<?php echo esc_url( get_theme_file_uri( 'assets/tastensee-logo.svg' ) ); ?>" alt="tasteNsee" />
         </a>
 
