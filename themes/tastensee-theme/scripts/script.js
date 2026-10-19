@@ -59,7 +59,8 @@ if (testimonialsSlider && window.Swiper) {
   new window.Swiper(testimonialsSlider, {
     slidesPerView: 1,
     spaceBetween: 20,
-    loop: true,
+    loop: testimonialsSlider.querySelectorAll('.swiper-slide').length > 3,
+    watchOverflow: true,
     speed: prefersReducedMotion ? 0 : 700,
     autoplay: prefersReducedMotion
       ? false

@@ -11,6 +11,44 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tastensee
 */
 
+.not-found {
+  min-height: 60vh;
+}
+
+.not-found__inner {
+  text-align: center;
+}
+
+.not-found__code {
+  margin: 12px 0;
+  color: var(--color-purple);
+  font-size: clamp(5rem, 16vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.not-found__description {
+  max-width: 540px;
+  margin: 20px auto 28px;
+  color: var(--color-muted);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.not-found__help {
+  margin-top: 24px;
+}
+
+.not-found__help a {
+  color: var(--color-purple);
+  text-decoration: underline;
+}
+
 :root {
   --color-ink: #1a1a1a;
   --color-muted: #4a6035;
@@ -871,6 +909,10 @@ textarea:focus-visible {
   font-size: 1.125rem;
 }
 
+.site-header__actions--mobile {
+  display: none;
+}
+
 .site-header__menu-toggle {
   display: none;
   width: 44px;
@@ -1536,6 +1578,22 @@ textarea:focus-visible {
   line-height: 1.65;
 }
 
+.testimonial-card--full .testimonial-card__quote > p:first-child {
+  margin-top: 0;
+}
+
+.testimonial-card--full .testimonial-card__quote > p:last-child {
+  margin-bottom: 0;
+}
+
+.testimonial-card--full .testimonial-card__quote > p:first-child::before {
+  content: "“";
+}
+
+.testimonial-card--full .testimonial-card__quote > p:last-child::after {
+  content: "”";
+}
+
 .testimonial-card__category {
   align-self: flex-start;
   margin-bottom: 16px;
@@ -1810,6 +1868,7 @@ textarea:focus-visible {
 
   .site-header__nav.is-open {
     max-height: calc(100vh - 70px);
+    overflow-y: auto;
     border-color: var(--color-line);
   }
 
@@ -1962,6 +2021,27 @@ textarea:focus-visible {
 
   .site-header__actions {
     display: none;
+  }
+
+  .site-header__nav .site-header__actions--mobile {
+    display: flex;
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 20px 24px;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .site-header__actions--mobile .site-header__social {
+    display: inline-flex;
+  }
+
+  .site-header__actions--mobile .button {
+    flex: 1;
+    min-width: 140px;
   }
 
   .site-header__menu-toggle {
@@ -5213,6 +5293,38 @@ body.is-gallery-modal-open {
   margin-top: 40px;
 }
 
+.contact__layout > * {
+  min-width: 0;
+}
+
+.contact__layout .wpcf7,
+.contact__layout .wpcf7-form,
+.contact__layout .wpcf7-form-control-wrap,
+.contact__layout .consultation-form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.contact__layout .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.contact__layout .wpcf7-form input:not([type="checkbox"]):not([type="radio"]),
+.contact__layout .wpcf7-form select,
+.contact__layout .wpcf7-form textarea {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.contact__layout .wpcf7-response-output,
+.contact__layout .wpcf7-not-valid-tip,
+.contact__layout .consultation-form__contact a {
+  overflow-wrap: anywhere;
+}
+
 .consultation-form {
   overflow: hidden;
   background: var(--color-white);
@@ -5672,7 +5784,7 @@ body.is-gallery-modal-open {
   }
 
   .contact__layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .contact__aside {
@@ -6786,7 +6898,7 @@ body.is-gallery-modal-open {
 }
 
 .contact__layout--message {
-  height: 760px;
+  height: auto;
 }
 
 .contact-form__body {
@@ -6803,19 +6915,19 @@ body.is-gallery-modal-open {
 }
 
 .contact-form__details {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .contact-form__contact-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .contact-form__message {
-  padding-top: 20px;
-  padding-bottom: 6px;
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 
 .contact-form__message .consultation-form__textarea {
@@ -6840,6 +6952,18 @@ body.is-gallery-modal-open {
   height: 16px;
   object-fit: contain;
 }
+
+.contact-form .consultation-form__contact p{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: rgba(26, 26, 26, 0.45);
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 19.5px;
+}
+
+.contact-form .consultation-form__contact p img
 
 .contact__aside--message {
   display: flex;

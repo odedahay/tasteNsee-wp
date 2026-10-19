@@ -1,0 +1,9 @@
+New contact message
+
+Name: [your-name]
+Email: [your-email]
+Phone: [phone]
+Reason: [reason]
+
+Message:
+[your-message]

@@ -1,0 +1,57 @@
+<div class="consultation-form contact-form" id="contact-form" data-form-type="contact">
+  <div class="consultation-form__top">
+    <p>Will reply within 24 hrs</p>
+  </div>
+
+  <div class="consultation-form__body contact-form__body">
+    <div class="consultation-form__field contact-form__reason">
+      <label class="consultation-form__label" for="contact-reason">Reason for Contacting</label>
+      <div class="consultation-form__select-wrap">
+        [select reason id:contact-reason class:consultation-form__control class:consultation-form__select first_as_label "Select a reason…" "Existing order" "Workshop" "Event" "General question" "Other"]
+        <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <div class="consultation-form__divider contact-form__divider" aria-hidden="true"></div>
+
+    <div class="contact-form__details">
+      <div class="consultation-form__field">
+        <label class="consultation-form__label" for="contact-name">
+          Name <span class="consultation-form__required" aria-hidden="true">*</span>
+        </label>
+        [text* your-name id:contact-name class:consultation-form__control autocomplete:name placeholder "Your name"]
+      </div>
+
+      <div class="consultation-form__fields--two-column contact-form__contact-fields">
+        <div class="consultation-form__field">
+          <label class="consultation-form__label" for="contact-phone">
+            Phone <span class="consultation-form__required" aria-hidden="true">*</span>
+          </label>
+          [tel* phone id:contact-phone class:consultation-form__control autocomplete:tel placeholder "(204) 000-0000"]
+        </div>
+
+        <div class="consultation-form__field">
+          <label class="consultation-form__label" for="contact-email">
+            Email <span class="consultation-form__required" aria-hidden="true">*</span>
+          </label>
+          [email* your-email id:contact-email class:consultation-form__control autocomplete:email placeholder "you@example.com"]
+        </div>
+      </div>
+    </div>
+
+    <div class="consultation-form__field contact-form__message">
+      <label class="consultation-form__label" for="contact-message">
+        Message <span class="consultation-form__required" aria-hidden="true">*</span>
+      </label>
+      [textarea* your-message id:contact-message class:consultation-form__control class:consultation-form__textarea placeholder "How can we help?"]
+    </div>
+
+    [submit class:consultation-form__submit class:contact-form__submit "Send Message →"]
+  </div>
+
+  <address class="consultation-form__contact">
+    <a href="tel:+12049638496"><i class="ri-phone-line" aria-hidden="true"></i>204-963-8496</a>
+    <a href="mailto:tastensee82@gmail.com"><i class="ri-mail-line" aria-hidden="true"></i>tastensee82@gmail.com</a>
+    <a href="/#instagram"><i class="ri-instagram-line" aria-hidden="true"></i>@tatsensee82</a>
+  </address>
+</div>

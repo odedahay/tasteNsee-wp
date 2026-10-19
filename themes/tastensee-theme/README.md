@@ -1,5 +1,7 @@
 # TasteNsee WordPress theme
 
+Testimonials are registered by `mu-plugins/tastensee-testimonials.php`. Under **Testimonials → Add New Testimonial**, use the title for the client name, the editor for the quote, Client photo for the avatar, Testimonial Categories for the service label, and Star rating for 1–5 stars. The `/testimonials/` archive displays 12 entries per page, ordered by Order then newest date. `archive-testimonial.php` loads the card loop in `archive-testimonials.php`. The former static cards are replaced; add the reviews through WordPress admin.
+
 The Cake Gallery lives at `/cakes/` and uses `archive-cake.php`. Manage entries under **Cakes** in WordPress: set the title, cake image (featured image), and Cake Categories. The Order field controls gallery order. Cards open the full image in a modal; category filters and counts update from published cakes.
 
 The post type and taxonomy are registered by `wp-content/mu-plugins/tastensee-cakes.php`, which WordPress loads automatically. Keep that file when deploying the theme. The gallery loop and card markup live in `archive-cake.php`. Upload images through **Cakes → Add New Cake → Set cake image** in WordPress admin; no sample import is required. Cakes without an image display a placeholder until you upload one.

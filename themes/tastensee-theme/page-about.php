@@ -160,7 +160,7 @@
               </p>
             </div>
           </div>
-          <a class="button button--solid button--small" href="contact.html">Inquire Now</a>
+          <a class="button button--solid button--small" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Inquire Now</a>
         </div>
       </section>
 

@@ -1,5 +1,10 @@
 <?php
 /** Shared site header. @package TasteNsee */
+$about_active = is_page( 'about' );
+$contact_active = is_page( 'contact' );
+$blog_active = is_page( 'blog' ) || ( is_home() && ! is_front_page() ) || is_singular( 'post' ) || is_category() || is_tag() || is_date() || is_author();
+$testimonials_active = is_page( 'testimonials' ) || is_post_type_archive( 'testimonial' ) || is_singular( 'testimonial' ) || is_tax( 'testimonial_category' );
+$more_active = $about_active || $blog_active || $testimonials_active;
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -43,16 +48,21 @@
           
           <a class="site-header__nav-link" href="<?php echo esc_url( home_url( '/workshops-events/' ) ); ?>">Workshop &amp; Events</a>
           <div class="site-header__dropdown">
-            <button class="site-header__nav-link site-header__dropdown-toggle" type="button" aria-expanded="false">
+            <button class="site-header__nav-link site-header__dropdown-toggle <?php echo $more_active ? 'site-header__nav-link--active' : ''; ?>" type="button" aria-expanded="false">
               More <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
             </button>
             <div class="site-header__dropdown-menu">
-              <a class="site-header__dropdown-link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About Me</a>
-              <a class="site-header__dropdown-link" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Blog</a>
-              <a class="site-header__dropdown-link" href="<?php echo esc_url( home_url( '/testimonials/' ) ); ?>">Testimonials</a>
+              <a class="site-header__dropdown-link <?php echo $about_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/about/' ) ); ?>" <?php if ( $about_active ) : ?>aria-current="page"<?php endif; ?>>About Me</a>
+              <a class="site-header__dropdown-link <?php echo $blog_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" <?php if ( $blog_active ) : ?>aria-current="page"<?php endif; ?>>Blog</a>
+              <a class="site-header__dropdown-link <?php echo $testimonials_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/testimonials/' ) ); ?>" <?php if ( $testimonials_active ) : ?>aria-current="page"<?php endif; ?>>Testimonials</a>
             </div>
           </div>
-          <a class="site-header__nav-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a>
+          <a class="site-header__nav-link <?php echo $contact_active ? 'site-header__nav-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" <?php if ( $contact_active ) : ?>aria-current="page"<?php endif; ?>>Contact</a>
+          <div class="site-header__actions site-header__actions--mobile">
+            <a class="site-header__social" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
+            <a class="site-header__social" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a class="button button--small button--solid" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Inquire Now</a>
+          </div>
         </nav>
 
         <div class="site-header__actions">
