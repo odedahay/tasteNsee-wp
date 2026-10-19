@@ -1,0 +1,103 @@
+<div class="consultation-form consultation-form--request" id="consultation-request" data-form-type="quote">
+    <div class="consultation-form__top consultation-form__top--request">
+        <h2 class="consultation-form__title">Tell us about your celebration</h2>
+        <p>Free consultation · No obligation · Reply within 24 hrs</p>
+    </div>
+
+    <div class="consultation-form__body">
+        <div class="consultation-form__fields consultation-form__fields--two-column consultation-form__fields--first">
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-name">
+                    Name <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                [text* your-name id:consultation-name class:consultation-form__control autocomplete:name placeholder "Your name"]
+            </div>
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-email">
+                    Email <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                [email* your-email id:consultation-email class:consultation-form__control autocomplete:email placeholder "you@example.com"]
+            </div>
+        </div>
+
+        <div class="consultation-form__fields consultation-form__fields--two-column">
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-date">
+                    Event Date <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                [date* event-date id:consultation-date class:consultation-form__control class:consultation-form__date]
+            </div>
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-occasion">
+                    Occasion <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                <div class="consultation-form__select-wrap">
+                    [select* occasion id:consultation-occasion class:consultation-form__control class:consultation-form__select first_as_label "Select an occasion" "Birthday" "Wedding" "Anniversary" "Corporate event" "Other celebration"]
+                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultation-form__fields consultation-form__fields--two-column">
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-package">
+                    Celebration Package Option <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                <div class="consultation-form__select-wrap">
+                    [select* celebration-package id:consultation-package class:consultation-form__control class:consultation-form__select first_as_label "Select a celebration package" "The Sweet Petite — 15–20 guests · $250" "The Crowd Pleaser — 20–30 guests · $450" "The Big Bash — 35–45 guests · $750" "The Show Stopper — 50–80 guests · $1,450"]
+                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-cake-type">
+                    Cake type <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                <div class="consultation-form__select-wrap">
+                    [select* cake-type id:consultation-cake-type class:consultation-form__control class:consultation-form__select first_as_label "Select cake type" "Wedding" "Birthday Buttercream" "Birthday Fondant" "Mom’s Cake" "Dad’s Cake" "Gender Reveal / Baby Shower" "Retirement / Send Off" "Religious"]
+                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultation-form__fields consultation-form__fields--single">
+            <div class="consultation-form__field">
+                <label class="consultation-form__label" for="consultation-fulfillment">
+                    Pickup or Delivery <span class="consultation-form__required" aria-hidden="true">*</span>
+                </label>
+                <div class="consultation-form__select-wrap">
+                    [select* fulfillment id:consultation-fulfillment class:consultation-form__control class:consultation-form__select first_as_label "Choose pickup or delivery" "Free pickup" "Delivery from $20 — rate varies by distance"]
+                    <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultation-form__field consultation-form__field--phone">
+            <label class="consultation-form__label" for="consultation-phone">
+                Phone <span class="consultation-form__required" aria-hidden="true">*</span>
+            </label>
+            [tel* phone id:consultation-phone class:consultation-form__control autocomplete:tel placeholder "(204) 000-0000"]
+        </div>
+
+        <div class="consultation-form__field consultation-form__field--vision">
+            <label class="consultation-form__label" for="consultation-vision">
+                Describe your cake vision
+            </label>
+            [textarea vision id:consultation-vision class:consultation-form__control class:consultation-form__textarea placeholder "Any ideas on style, colours, flavours, or the occasion — we will cover everything in the consultation."]
+        </div>
+
+        <div class="consultation-form__field consultation-form__field--upload">
+            <label class="consultation-form__label" for="consultation-inspiration">Add an inspiration photo</label>
+            [file inspiration id:consultation-inspiration class:consultation-form__control class:consultation-form__file filetypes:jpg|jpeg|png|webp limit:5mb]
+        </div>
+
+        <ul class="consultation-form__promises" aria-label="Consultation benefits">
+            <li><i class="ri-check-line" aria-hidden="true"></i>Reply within 24 hrs</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No payment at this stage</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>Your details stay private</li>
+        </ul>
+
+        [submit class:consultation-form__submit "Request My Cake Quote →"]
+    </div>
+
+    <p class="consultation-form__general-question">Have a general question? <a href="/contact/">Contact Us</a></p>
+</div>

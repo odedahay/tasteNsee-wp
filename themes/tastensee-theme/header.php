@@ -58,7 +58,7 @@
         <div class="site-header__actions">
           <a class="site-header__social" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
           <a class="site-header__social" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
-          <a class="button button--small button--solid" href="<?php echo esc_url( home_url( '/consultation/' ) ); ?>">Inquire Now</a>
+          <a class="button button--small button--solid" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Inquire Now</a>
         </div>
       </div>
     </header>

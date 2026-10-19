@@ -208,7 +208,15 @@ copyLinkButtons.forEach((copyLinkButton) => {
   });
 });
 
-const consultationForm = document.querySelector('.consultation-form');
+// Redirect only after CF7 confirms that the inquiry email was sent.
+document.addEventListener('wpcf7mailsent', (event) => {
+  const inquiryLayout = event.target.closest('[data-inquiry-success-url]');
+  if (inquiryLayout) {
+    window.location.assign(inquiryLayout.dataset.inquirySuccessUrl);
+  }
+});
+
+const consultationForm = document.querySelector('form.consultation-form:not(.wpcf7-form)');
 const consultationMessage = document.querySelector('[data-consultation-message]');
 
 consultationForm?.addEventListener('submit', (event) => {

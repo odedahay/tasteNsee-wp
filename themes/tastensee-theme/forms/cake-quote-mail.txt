@@ -1,0 +1,15 @@
+New custom cake quote request
+
+Name: [your-name]
+Email: [your-email]
+Phone: [phone]
+Event date: [event-date]
+Occasion: [occasion]
+Celebration package: [celebration-package]
+Cake type: [cake-type]
+Pickup or delivery: [fulfillment]
+
+Cake vision:
+[vision]
+
+Inspiration photo: [inspiration]

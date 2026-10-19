@@ -5288,6 +5288,30 @@ body.is-gallery-modal-open {
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
+.wpcf7 .consultation-form .wpcf7-form-control-wrap {
+  display: block;
+}
+
+.wpcf7 .consultation-form__field > p,
+.wpcf7 .consultation-form__select-wrap > p {
+  margin: 0;
+}
+
+.wpcf7 .consultation-form__field > p > br,
+.wpcf7 .consultation-form__select-wrap > p > br {
+  display: none;
+}
+
+.wpcf7 .consultation-form__file {
+  height: auto;
+  min-height: 49px;
+}
+
+.wpcf7-spinner{
+  display: block;
+  margin: 12px auto;
+}
+
 .consultation-form__control::placeholder {
   color: rgba(26, 26, 26, 0.3);
   opacity: 1;
@@ -5324,17 +5348,15 @@ body.is-gallery-modal-open {
 .consultation-form__select {
   appearance: none;
   padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23b08de3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px 20px;
   cursor: pointer;
 }
 
-.consultation-form__select-wrap > i {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  color: var(--color-purple-light);
-  font-size: 1.125rem;
-  pointer-events: none;
-  transform: translateY(-50%);
+.consultation-form__select-wrap .ri-arrow-down-s-line {
+  display: none;
 }
 
 .consultation-form__textarea {
@@ -5344,6 +5366,7 @@ body.is-gallery-modal-open {
 
 .consultation-form__promises {
   display: flex;
+  flex-wrap: wrap;
   min-height: 54px;
   align-items: center;
   gap: 20px;
@@ -5358,16 +5381,28 @@ body.is-gallery-modal-open {
 
 .consultation-form__promises li {
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   align-items: center;
   gap: 8px;
   font-size: 1rem;
   line-height: 19.5px;
-  white-space: nowrap;
+  white-space: normal;
+}
+
+/* CF7 may wrap list contents in paragraphs and insert line breaks. */
+.consultation-form__promises li p {
+  display: contents;
+  margin: 0;
+}
+
+.consultation-form__promises li br {
+  display: none;
 }
 
 .consultation-form__promises i {
   display: grid;
+  flex: 0 0 16px;
   width: 16px;
   height: 16px;
   place-items: center;
@@ -6437,7 +6472,7 @@ body.is-gallery-modal-open {
 }
 
 .contact__inner--consultation {
-  height: 1393px;
+  height: auto;
   padding-bottom: 56px;
 }
 
@@ -6473,7 +6508,7 @@ body.is-gallery-modal-open {
 }
 
 .consultation-form--request .consultation-form__fields {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .consultation-form--request .consultation-form__fields--first {

@@ -81,6 +81,30 @@ function tastensee_save_cake_featured( $post_id ) {
 }
 add_action( 'save_post_cake', 'tastensee_save_cake_featured' );
 
+function tastensee_cake_admin_columns( $columns ) {
+    $updated = array();
+    foreach ( $columns as $key => $label ) {
+        if ( 'taxonomy-cake_category' === $key ) {
+            $updated['tastensee_home_feature'] = __( 'Home Feature', 'tastensee' );
+        }
+        $updated[ $key ] = $label;
+    }
+    if ( ! isset( $updated['tastensee_home_feature'] ) ) {
+        $updated['tastensee_home_feature'] = __( 'Home Feature', 'tastensee' );
+    }
+    return $updated;
+}
+add_filter( 'manage_cake_posts_columns', 'tastensee_cake_admin_columns' );
+
+function tastensee_cake_admin_column_content( $column, $post_id ) {
+    if ( 'tastensee_home_feature' === $column ) {
+        echo esc_html( '1' === get_post_meta( $post_id, '_tastensee_cake_featured', true )
+            ? __( 'Yes', 'tastensee' )
+            : __( 'No', 'tastensee' ) );
+    }
+}
+add_action( 'manage_cake_posts_custom_column', 'tastensee_cake_admin_column_content', 10, 2 );
+
 function tastensee_cake_archive_query( $query ) {
     if ( ! is_admin() && $query->is_main_query() && $query->is_post_type_archive( 'cake' ) ) {
         // Load the complete collection so category filters and counts agree.
