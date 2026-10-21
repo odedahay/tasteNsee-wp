@@ -138,7 +138,7 @@
             <a class="button button--solid" href="workshops-events.html#workshops">View All Workshops</a>
           </div>
           <div class="workshops__media">
-            <a class="text-link activity-card__link" href="workshops-events.html#markets">View All Workshops for Kids & Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+            <a class="text-link activity-card__link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">View All Workshops for Kids & Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
             <article class="activity-card activity-card--featured">
               <div class="activity-card__media">
                 <img
@@ -178,41 +178,46 @@
               <p class="eyebrow">Inspire. Create. Belong.</p>
               <h2 class="section-heading__title">Pop-Up Markets</h2>
             </div>
-            <a class="text-link" href="workshops-events.html#markets">View All Pop-Up Markets <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+            <a class="text-link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">View All Pop-Up Markets <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
           </div>
-          <div class="events__grid">
-            <a class="event-card" href="blog-details.html">
-              <div class="event-card__date"><span>JUL</span><strong>23</strong></div>
-              <div class="event-card__content">
-                <h3 class="event-card__title">New Brighton’s Sunset Market</h3>
-                <p class="event-card__detail"><i class="ri-map-pin-line" aria-hidden="true"></i> Calgary, Alberta</p>
-                <p class="event-card__detail"><i class="ri-time-line" aria-hidden="true"></i> Past event · July 23, 2026</p>
-                <span class="activity-card__read-more">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
-              </div>
-            </a>
-            <a class="event-card" href="blog-details.html">
-              <div class="event-card__date"><span>SEP</span><strong>26</strong></div>
-              <div class="event-card__content">
-                <h3 class="event-card__title">Fall Truck Sale</h3>
-                <p class="event-card__detail"><i class="ri-map-pin-line" aria-hidden="true"></i> St. Bonaventure Parish, Calgary</p>
-                <p class="event-card__detail"><i class="ri-time-line" aria-hidden="true"></i> 10:00 AM–4:00 PM</p>
-                <span class="activity-card__read-more">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
-              </div>
-            </a>
-            <a class="event-card" href="blog-details.html">
-              <div class="event-card__date"><span>OCT</span><strong>03</strong></div>
-              <div class="event-card__content">
-                <h3 class="event-card__title">Maple &amp; Makers</h3>
-                <p class="event-card__detail"><i class="ri-map-pin-line" aria-hidden="true"></i> 520 27th Avenue NE, Calgary</p>
-                <p class="event-card__detail"><i class="ri-time-line" aria-hidden="true"></i> 10:00 AM–4:00 PM</p>
-                <span class="activity-card__read-more">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
-              </div>
-            </a>
-          </div>
+          <?php
+          $home_market_args = tastensee_popup_query_args();
+          $home_market_args['posts_per_page'] = 3;
+          $home_markets = new WP_Query( $home_market_args );
+          ?>
+          <?php if ( $home_markets->have_posts() ) : ?>
+            <div class="events__grid">
+              <?php while ( $home_markets->have_posts() ) : $home_markets->the_post(); ?>
+                <?php $market = tastensee_popup_details( get_the_ID() ); ?>
+                <a class="event-card" href="<?php the_permalink(); ?>">
+                  <?php if ( $market['date'] ) : ?>
+                    <time class="event-card__date" datetime="<?php echo esc_attr( $market['date']->format( 'Y-m-d' ) ); ?>">
+                      <span><?php echo esc_html( wp_date( 'M', $market['date']->getTimestamp() ) ); ?></span>
+                      <strong><?php echo esc_html( $market['date']->format( 'd' ) ); ?></strong>
+                    </time>
+                  <?php endif; ?>
+                  <div class="event-card__content">
+                    <h3 class="event-card__title"><?php the_title(); ?></h3>
+                    <?php if ( $market['location'] ) : ?>
+                      <p class="event-card__detail"><i class="ri-map-pin-line" aria-hidden="true"></i> <?php echo esc_html( $market['location'] ); ?></p>
+                    <?php endif; ?>
+                    <p class="event-card__detail"><i class="ri-time-line" aria-hidden="true"></i>
+                      <?php if ( $market['date'] ) : ?><?php echo esc_html( wp_date( 'F j, Y', $market['date']->getTimestamp() ) ); ?><?php endif; ?>
+                      <?php if ( $market['time'] ) : ?> · <?php echo esc_html( $market['time'] ); ?><?php endif; ?>
+                    </p>
+                    <span class="activity-card__read-more">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></span>
+                  </div>
+                </a>
+              <?php endwhile; ?>
+            </div>
+          <?php else : ?>
+            <p class="events__empty">No upcoming pop-up markets right now. Check back soon for our next market dates!</p>
+          <?php endif; ?>
+          <?php wp_reset_postdata(); ?>
         </div>
       </section>
 
-      <section class="section journal" id="journal">
+      <!-- <section class="section journal" id="journal">
         <div class="page-shell">
           <div class="section-heading section-heading--row">
             <div>
@@ -257,11 +262,11 @@
             </a>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <?php get_template_part( 'template-parts/home-testimonials' ); ?>
 
-      <section class="section section--mint instagram" id="instagram">
+      <!-- <section class="section section--mint instagram" id="instagram">
         <div class="page-shell">
           <div class="section-heading section-heading--row section-heading--compact">
             <div>
@@ -279,7 +284,7 @@
             <button class="photo-modal-trigger" type="button" data-gallery-title="Dessert platter" data-gallery-category="Sweet Creations" aria-label="View Dessert platter photo" aria-haspopup="dialog" aria-controls="gallery-modal"><img class="instagram__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/instagram-6.png' ) ); ?>" alt="Dessert platter" /></button>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Newsletter subscription section hidden.
       <section class="newsletter" aria-labelledby="newsletter-title">

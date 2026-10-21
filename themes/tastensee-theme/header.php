@@ -2,6 +2,7 @@
 /** Shared site header. @package TasteNsee */
 $about_active = is_page( 'about' );
 $contact_active = is_page( 'contact' );
+$workshops_events_active = is_page( array( 'workshops-events', 'past-events', 'past-event' ) ) || is_singular( 'popup' );
 $blog_active = is_page( 'blog' ) || ( is_home() && ! is_front_page() ) || is_singular( 'post' ) || is_category() || is_tag() || is_date() || is_author();
 $testimonials_active = is_page( 'testimonials' ) || is_post_type_archive( 'testimonial' ) || is_singular( 'testimonial' ) || is_tax( 'testimonial_category' );
 $more_active = $about_active || $blog_active || $testimonials_active;
@@ -46,14 +47,14 @@ $more_active = $about_active || $blog_active || $testimonials_active;
           <a class="site-header__nav-link <?php echo is_front_page() ? 'site-header__nav-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" <?php if ( is_front_page() ) : ?>aria-current="page"<?php endif; ?>>Home</a>
           <a class="site-header__nav-link <?php echo is_post_type_archive( 'cake' ) ? 'site-header__nav-link--active' : ''; ?>" href="<?php echo esc_url( get_post_type_archive_link( 'cake' ) ); ?>" <?php if ( is_post_type_archive( 'cake' ) ) : ?>aria-current="page"<?php endif; ?>>Cakes Gallery</a>
           
-          <a class="site-header__nav-link" href="<?php echo esc_url( home_url( '/workshops-events/' ) ); ?>">Workshop &amp; Events</a>
+          <a class="site-header__nav-link <?php echo $workshops_events_active ? 'site-header__nav-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/workshops-events/' ) ); ?>" <?php if ( $workshops_events_active ) : ?>aria-current="<?php echo is_page( 'workshops-events' ) ? 'page' : 'location'; ?>"<?php endif; ?>>Workshop &amp; Events</a>
           <div class="site-header__dropdown">
             <button class="site-header__nav-link site-header__dropdown-toggle <?php echo $more_active ? 'site-header__nav-link--active' : ''; ?>" type="button" aria-expanded="false">
               More <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
             </button>
             <div class="site-header__dropdown-menu">
               <a class="site-header__dropdown-link <?php echo $about_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/about/' ) ); ?>" <?php if ( $about_active ) : ?>aria-current="page"<?php endif; ?>>About Me</a>
-              <a class="site-header__dropdown-link <?php echo $blog_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" <?php if ( $blog_active ) : ?>aria-current="page"<?php endif; ?>>Blog</a>
+              <!-- <a class="site-header__dropdown-link <?php //echo $blog_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php //echo esc_url( home_url( '/blog/' ) ); ?>" <?php //if ( $blog_active ) : ?>aria-current="page"<?php //endif; ?>>Blog</a> -->
               <a class="site-header__dropdown-link <?php echo $testimonials_active ? 'site-header__dropdown-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/testimonials/' ) ); ?>" <?php if ( $testimonials_active ) : ?>aria-current="page"<?php endif; ?>>Testimonials</a>
             </div>
           </div>
