@@ -6976,6 +6976,7 @@ body.is-gallery-modal-open {
   background: var(--color-white);
   border: 1px solid var(--color-line);
   border-radius: 24px;
+  margin-bottom:20px;
 }
 
 .contact-panel h2 {

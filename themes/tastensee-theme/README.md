@@ -17,3 +17,19 @@ To show a cake under **Order a Custom Cake** on the homepage, check **Homepage f
 The original `styles.css` was not supplied. Add it to this directory to restore the design; the theme enqueues it automatically when present.
 
 Internal .html links now target WordPress page slugs. Create the corresponding pages (gallery, workshops-events, about, blog, testimonials, contact, consultation, workshop-details, workshop-kids-registration, blog-details) or update those links to your actual permalinks. The homepage section templates remain available in `template-parts/` for building individual page templates. There is no dedicated front-page template. Forms and social-link placeholders retain the original demo behavior and require service integration for real submissions.
+
+
+## Pop-Up Markets
+
+`wp-content/mu-plugins/tastensee-popups.php` registers the `popup` post type. The **Market Details** field group is stored in the WordPress database and editable under **ACF → Field Groups → Market Details**. Deploy this MU plugin with the theme, and export/import the group using ACF → Tools when moving sites. No paid ACF features are needed. Keep the existing field names (`popup_date`, `popup_start_time`, `popup_end_time`, `popup_location`), field keys, types, and the Pop-Up Market location rule intact because templates and saved entries depend on them.
+
+Under **Pop-Up Markets → Add New**, enter the title, description, optional excerpt and market image, then the required Event date, Start time, End time, and Location. Publish the event to display it under `#markets` on `/workshops-events/`. The listing sorts by the event date descending (latest date first), excludes drafts and dates before today, and includes today's events until the day ends in the WordPress site timezone. Set Settings → General → Timezone to the business timezone (America/Edmonton for Calgary). Markets without an event date do not appear.
+
+The custom query uses ACF's raw `Ymd` date values, not the post publication date. With no upcoming markets, the section displays an empty-state message. The existing hardcoded sample markets are replaced rather than imported.
+
+`single-popup.php` renders the featured image, editor content, event details, share button, and link back to the listing. Single URLs use `/pop-up-markets/{slug}/`; old events remain directly accessible with a past-event notice. There is no market registration form or separate archive. Rewrite rules refresh once after installation.
+
+
+## Past Pop-Up Events
+
+`page-past-events.php` displays all published pop-up markets with `popup_date` earlier than today, newest event date first. Its WordPress Page uses the slug `past-events` and is linked from the Pop-Up Markets section. Events enter the past listing automatically the day after their event date in the WordPress site timezone; no post or ACF data is moved or duplicated. Individual URLs continue to use `single-popup.php`. Both lists share `template-parts/popup-card.php`.
