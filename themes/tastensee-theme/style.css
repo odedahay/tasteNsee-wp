@@ -2266,6 +2266,18 @@ textarea:focus-visible {
   margin-top: 80px;
 }
 
+.workshops-events-listings #past-workshops {
+  position: relative;
+}
+
+.workshops-events-listings #past-workshops::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  inset-inline: 24px;
+  border-top: 1px solid var(--color-line);
+}
+
 .activity-collection__header {
   display: flex;
   align-items: flex-end;
@@ -2879,6 +2891,10 @@ textarea:focus-visible {
 
   .activity-collection + .activity-collection {
     margin-top: 64px;
+  }
+
+  .workshops-events-listings #past-workshops::before {
+    top: -32px;
   }
 
   .activity-collection__header {

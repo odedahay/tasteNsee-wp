@@ -10,8 +10,8 @@
               Custom cakes, delicious desserts, and creative edible arts workshops for every celebration.
             </p>
             <div class="hero__actions">
-              <a class="button button--solid" href="consultation.html">Order a Cake</a>
-              <a class="button button--outline" href="workshops-events.html">Join a Workshop</a>
+              <a class="button button--solid" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">Order a Cake</a>
+              <a class="button button--outline" href="<?php echo esc_url( home_url( '/workshops-events' ) ); ?>">Join a Workshop</a>
             </div>
           </div>
           <div class="hero__visual">
@@ -135,7 +135,7 @@
               Kids can explore playful, inclusive baking projects, while adults create beautiful edible art in our
               relaxed Cake &amp; Canvas and seasonal workshops.
             </p>
-            <a class="button button--solid" href="workshops-events.html#workshops">View All Workshops</a>
+            <a class="button button--solid" href="<?php echo esc_url( home_url( '/workshops-events/#workshops' ) ); ?>">View All Workshops</a>
           </div>
           <div class="workshops__media">
             <a class="text-link activity-card__link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">View All Workshops for Kids & Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
@@ -157,7 +157,7 @@
                   <li>Halloween</li>
                 </ul>
                 <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">
+                  <a class="activity-card__read-more" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">
                     Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
                   </a>
                   <a
