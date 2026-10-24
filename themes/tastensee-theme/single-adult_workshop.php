@@ -137,60 +137,7 @@ get_header();
               </section>
             </div> -->
 
-        <section class="workshop-detail-faq" aria-labelledby="workshop-faq-title">
-          <p class="workshop-detail-heading">Have Questions?</p>
-          <h2 id="workshop-faq-title">Frequently Asked</h2>
-          <div class="workshop-detail-faq__list site-accordion" data-accordion>
-            <article class="workshop-detail-faq__item site-accordion__item">
-              <button class="site-accordion__trigger" type="button" aria-expanded="false" aria-controls="workshop-faq-parent" data-faq-trigger>
-                <span>Can I bring a guest?</span><i class="ri-add-line" aria-hidden="true"></i>
-              </button>
-              <div class="workshop-detail-faq__answer site-accordion__panel" id="workshop-faq-parent" aria-hidden="true">
-                <div class="site-accordion__panel-inner">
-                  <div class="site-accordion__content">
-                    <p>Please contact Karen before bringing a guest so availability can be confirmed.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <article class="workshop-detail-faq__item site-accordion__item">
-              <button class="site-accordion__trigger" type="button" aria-expanded="false" aria-controls="workshop-faq-allergies" data-faq-trigger>
-                <span>What if I have food allergies?</span><i class="ri-add-line" aria-hidden="true"></i>
-              </button>
-              <div class="workshop-detail-faq__answer site-accordion__panel" id="workshop-faq-allergies" aria-hidden="true">
-                <div class="site-accordion__panel-inner">
-                  <div class="site-accordion__content">
-                    <p>Please list every allergy on the registration form. We will contact you before class to confirm whether suitable accommodations can be made.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <article class="workshop-detail-faq__item site-accordion__item">
-              <button class="site-accordion__trigger" type="button" aria-expanded="false" aria-controls="workshop-faq-group" data-faq-trigger>
-                <span>Can I book for a group or birthday party?</span><i class="ri-add-line" aria-hidden="true"></i>
-              </button>
-              <div class="workshop-detail-faq__answer site-accordion__panel" id="workshop-faq-group" aria-hidden="true">
-                <div class="site-accordion__panel-inner">
-                  <div class="site-accordion__content">
-                    <p>Yes. Private workshops can be tailored for birthdays, team gatherings, and community events. Contact us for availability and pricing.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-            <article class="workshop-detail-faq__item site-accordion__item">
-              <button class="site-accordion__trigger" type="button" aria-expanded="false" aria-controls="workshop-faq-time" data-faq-trigger>
-                <span>How do you support participants with different abilities?</span><i class="ri-add-line" aria-hidden="true"></i>
-              </button>
-              <div class="workshop-detail-faq__answer site-accordion__panel" id="workshop-faq-time" aria-hidden="true">
-                <div class="site-accordion__panel-inner">
-                  <div class="site-accordion__content">
-                    <p>We use small groups, visual demonstrations, a patient pace, and individual guidance. Share any support needs during registration so we can help you feel comfortable and successful.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
+        <?php get_template_part( 'template-parts/workshop-faqs', null, array( 'audience' => 'adult' ) ); ?>
 
         <?php get_template_part('template-parts/workshop-instructor'); ?>
       </div>

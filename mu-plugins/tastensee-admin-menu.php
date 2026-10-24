@@ -14,6 +14,7 @@ add_filter( 'menu_order', function ( $menu_order ) {
         'edit.php?post_type=popup',
         'edit.php?post_type=cake',
         'edit.php?post_type=testimonial',
+        'edit.php?post_type=workshop_faq',
     );
     $available_menus = array_values( array_intersect( $preferred_order, $menu_order ) );
     $ordered_menus = array();
