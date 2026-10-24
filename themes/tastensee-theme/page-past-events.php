@@ -1,33 +1,33 @@
 <?php
-/** Past pop-up market events. @package TasteNsee */
+/** Past pop-up markets and kids/adult workshops. @package TasteNsee */
 get_header();
 ?>
 <main id="main-content">
   <section class="page-hero" aria-labelledby="past-events-title">
     <div class="page-hero__inner page-shell">
       <p class="eyebrow">Sweet memories</p>
-      <h1 class="page-hero__title" id="past-events-title"><?php echo esc_html( get_the_title( get_queried_object_id() ) ); ?></h1>
-      <p class="page-hero__description">Look back at the pop-up markets and community events where we shared something sweet.</p>
+      <h1 class="page-hero__title" id="past-events-title">Past Events &amp; Workshops</h1>
+      <p class="page-hero__description">Look back at our kids’ workshops, adult edible art workshops, pop-up markets, and community events.</p>
     </div>
   </section>
   <div class="workshops-events-listings">
-    <section class="activity-collection page-shell" aria-labelledby="past-markets-title">
+    <section class="activity-collection page-shell" aria-labelledby="past-activities-title">
       <header class="activity-collection__header">
         <div>
           <p class="eyebrow">Around Calgary</p>
-          <h2 class="activity-collection__title" id="past-markets-title">Past Pop-Up Markets</h2>
+          <h2 class="activity-collection__title" id="past-activities-title">Past Events &amp; Workshops</h2>
         </div>
-        <a class="text-link activity-collection__link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">Upcoming Markets <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+        <a class="text-link activity-collection__link" href="<?php echo esc_url( home_url( '/workshops-events/' ) ); ?>">Upcoming Events &amp; Workshops <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
       </header>
-      <?php $markets = new WP_Query( tastensee_popup_query_args( true ) ); ?>
-      <?php if ( $markets->have_posts() ) : ?>
+      <?php $past_activities = new WP_Query( tastensee_past_activity_query_args() ); ?>
+      <?php if ( $past_activities->have_posts() ) : ?>
         <div class="activity-collection__grid">
-          <?php while ( $markets->have_posts() ) : $markets->the_post(); ?>
-            <?php get_template_part( 'template-parts/popup-card', null, array( 'past' => true ) ); ?>
+          <?php while ( $past_activities->have_posts() ) : $past_activities->the_post(); ?>
+            <?php get_template_part( 'template-parts/past-activity-card' ); ?>
           <?php endwhile; ?>
         </div>
       <?php else : ?>
-        <p class="activity-collection__empty">No past pop-up events to display yet. Check out our upcoming markets!</p>
+        <p class="activity-collection__empty">No past events or workshops to display yet. Check out our upcoming dates!</p>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>
     </section>

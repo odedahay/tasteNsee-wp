@@ -267,7 +267,7 @@ document.querySelectorAll('[data-character-counter]').forEach((counter) => {
   });
 });
 
-const registrationForm = document.querySelector('.registration-form');
+const registrationForm = document.querySelector('form.registration-form');
 const registrationMessage = document.querySelector('[data-registration-message]');
 
 registrationForm?.addEventListener('submit', (event) => {

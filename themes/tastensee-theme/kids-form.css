@@ -1,0 +1,47 @@
+/* Forminator controls inside the original Kids registration card. */
+.registration-form--forminator .forminator-ui.forminator-custom-form {
+  margin: 0 !important; font-family: inherit !important;
+  --forminator-primary: #8056bd;
+}
+.registration-form--forminator .forminator-ui .forminator-row { margin-bottom: 22px !important; }
+.registration-form--forminator .forminator-ui .forminator-label { color: #333 !important; font: 700 14px/1.5 "Nunito", sans-serif !important; margin-bottom: 8px !important; }
+.registration-form--forminator .forminator-ui .forminator-input,
+.registration-form--forminator .forminator-ui .forminator-textarea,
+.registration-form--forminator .forminator-ui select {
+  background: #fff !important; color: #333 !important; border: 1px solid #b8d994 !important;
+  border-radius: 10px !important; padding: 12px 14px !important; font: inherit !important;
+  min-height: 46px; width: 100%;
+}
+.registration-form--forminator .forminator-ui .forminator-textarea { min-height: 120px; }
+.registration-form--forminator .forminator-ui .forminator-input:focus,
+.registration-form--forminator .forminator-ui .forminator-textarea:focus,
+.registration-form--forminator .forminator-ui select:focus { outline: 2px solid #8056bd !important; outline-offset: 2px; }
+.registration-form--forminator .forminator-ui .forminator-description,
+.registration-form--forminator .forminator-ui .forminator-checkbox__label,
+.registration-form--forminator .forminator-ui .forminator-radio-label { font: 400 14px/1.5 "Nunito", sans-serif !important; color: #444 !important; }
+.registration-form--forminator .forminator-ui .forminator-checkbox,
+.registration-form--forminator .forminator-ui .forminator-radio { align-items: flex-start; }
+.registration-form--forminator .forminator-ui h2 { font: 800 17px/1.5 "Nunito", sans-serif; margin: 4px 0 0; }
+.registration-form--forminator .forminator-ui .forminator-button-submit {
+  width: 100%; background: #8056bd !important; color: #fff !important;
+  border-radius: 28px !important; padding: 14px 22px !important;
+  font: 800 16px/1.5 "Nunito", sans-serif !important; box-shadow: none !important;
+}
+.registration-form--forminator .forminator-ui .forminator-button-submit:hover { background: #69439f !important; }
+.registration-form--forminator .forminator-ui .forminator-button-submit:focus-visible { outline: 3px solid #35204e; outline-offset: 3px; }
+.registration-form--forminator .forminator-ui .kids-payment { padding: 18px; border: 1px solid #cce1b8; border-radius: 14px; background: #f0fae8; }
+.registration-form--forminator .forminator-ui .kids-payment h2 { font-size: 15px; }
+.registration-form--forminator .forminator-ui .kids-payment p { margin: 6px 0 0; }
+.registration-form--forminator .forminator-ui .forminator-row { display: flex !important; flex-wrap: wrap; gap: 16px; margin-left: 0 !important; margin-right: 0 !important; }
+.registration-form--forminator .forminator-ui .forminator-col { box-sizing: border-box; min-width: 0; margin: 0 !important; padding: 0 !important; }
+.registration-form--forminator .forminator-ui .forminator-col-12 { flex: 0 0 100% !important; width: 100% !important; }
+.registration-form--forminator .forminator-ui .forminator-col-6 { flex: 0 0 calc(50% - 8px) !important; width: calc(50% - 8px) !important; }
+.registration-form--forminator .forminator-ui .select2-container { width: 100% !important; max-width: 100%; }
+.registration-form--forminator .forminator-ui .select2-selection { border: 1px solid #b8d994 !important; border-radius: 10px !important; background: #fff !important; min-height: 46px !important; height: auto !important; }
+.registration-form--forminator .forminator-ui .select2-selection__rendered { padding: 10px 36px 10px 14px !important; font: 400 14px/1.6 "Nunito", sans-serif !important; white-space: normal !important; }
+.registration-form--forminator .forminator-ui .select2-selection__arrow { top: 10px !important; }
+.registration-form--forminator .forminator-ui .forminator-button-submit { width: 100% !important; }
+@media (max-width: 640px) {
+  .registration-form--forminator .forminator-ui .forminator-col-6 { flex-basis: 100% !important; width: 100% !important; }
+}
+.registration-form--forminator .forminator-ui .forminator-row-last > .forminator-col { flex: 0 0 100% !important; width: 100% !important; }

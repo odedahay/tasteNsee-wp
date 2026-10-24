@@ -5281,7 +5281,7 @@ body.is-gallery-modal-open {
   margin: 0;
   color: var(--color-pink);
   font-family: "Caveat", cursive;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
   line-height: 28px;
 }
@@ -8790,6 +8790,7 @@ body.is-gallery-modal-open {
   position: relative;
   height: 504px;
   padding-top: 24px;
+  margin-bottom: 24px;
 }
 
 .workshop-detail-hero__image,
@@ -9247,7 +9248,7 @@ body.is-gallery-modal-open {
 
 .workshop-booking__price strong {
   margin-top: 4px;
-  font-size: 3.25rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1;
 }

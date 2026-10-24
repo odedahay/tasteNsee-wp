@@ -26,102 +26,18 @@
               <p class="eyebrow">Ages 8–14</p>
               <h3>Kids’ Creative Workshops</h3>
             </div>
-            <a class="button button--solid" href="workshop-kids-registration.html">Register a Child</a>
+            <a class="button button--solid" href="<?php echo esc_url( tastensee_kids_registration_url() ); ?>">Register a Child</a>
           </div>
+          <?php $kids_workshops = new WP_Query( tastensee_kids_query_args() ); ?>
+          <?php if ( $kids_workshops->have_posts() ) : ?>
           <div class="activity-collection__grid activity-collection__grid--workshops">
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media">
-                <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cupcakes.jpeg' ) ); ?>"
-                  alt="Cupcakes being made during a creative workshop" /><time class="activity-card__date"
-                  datetime="2026-10-19"><span>Oct</span><strong>19</strong></time>
-              </div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Halloween Cupcake Design</h4>
-                <p class="activity-card__time">Monday, October 19 · 1:00–3:00 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Cupcakes</li>
-                  <li>Halloween</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshop-kids-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-fondant.jpeg' ) ); ?>" alt="Child learning creative baking skills" /><span
-                  class="activity-card__level">Date TBA</span></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Fall Break Half-Day — Option 2</h4>
-                <p class="activity-card__time">1:00–3:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Fall Break</li>
-                  <li>Half Day</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshop-kids-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cookies.jpeg' ) ); ?>" alt="Cookie decorating supplies ready for a workshop" /><time
-                  class="activity-card__date" datetime="2026-11-12"><span>Nov</span><strong>12</strong></time></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Fall Break Day 1: Cookie Masterclass</h4>
-                <p class="activity-card__time">Thursday, November 12 · 1:00–3:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Cookies</li>
-                  <li>Masterclass</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshop-kids-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cake.jpeg' ) ); ?>"
-                  alt="Decorated cake for a Cake and Canvas workshop" /><time class="activity-card__date"
-                  datetime="2026-11-13"><span>Nov</span><strong>13</strong></time></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Fall Break Day 2: Cake &amp; Canvas</h4>
-                <p class="activity-card__time">Friday, November 13 · 1:00–3:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Cake Painting</li>
-                  <li>Fall Break</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshop-kids-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-macarons.jpeg' ) ); ?>" alt="Edible gifts and baking tools" /><time
-                  class="activity-card__date" datetime="2026-12-19"><span>Dec</span><strong>19</strong></time></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Edible Gift Workshop</h4>
-                <p class="activity-card__time">Saturday, December 19 · 1:30–3:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Holiday</li>
-                  <li>Edible Gifts</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshop-kids-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
+            <?php while ( $kids_workshops->have_posts() ) : $kids_workshops->the_post(); ?>
+              <?php get_template_part( 'template-parts/kids-workshop-card' ); ?>
+            <?php endwhile; ?>
           </div>
+          <?php else : ?>
+            <p class="activity-collection__empty">New kids’ workshops are coming soon. Please check back for upcoming dates.</p>
+          <?php endif; wp_reset_postdata(); ?>
         </div>
 
         <div class="workshop-track" id="adult-workshops">
@@ -130,85 +46,18 @@
               <p class="eyebrow">Create something delicious</p>
               <h3>Adults’ Edible Art Workshops</h3>
             </div>
-            <a class="button button--solid" href="workshops-adult-registration.html">Register as an Adult</a>
+            <a class="button button--solid" href="<?php echo esc_url( tastensee_adult_registration_url() ); ?>">Register as an Adult</a>
           </div>
+          <?php $adult_workshops = new WP_Query( tastensee_adult_query_args() ); ?>
+          <?php if ( $adult_workshops->have_posts() ) : ?>
           <div class="activity-collection__grid activity-collection__grid--workshops">
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media">
-                <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cake.jpeg' ) ); ?>" alt="Floral painted cake" />
-                <time class="activity-card__date" datetime="2026-10-03"><span>Oct</span><strong>03</strong>
-                </time>
-              </div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Cake &amp; Canvas</h4>
-                <p class="activity-card__time">Saturday, October 3 · 6:30–8:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Adults</li>
-                  <li>Cake Painting</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-adult-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshops-adult-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media">
-                <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-details-instructor.jpg' ) ); ?>"
-                  alt="Instructor decorating a cake" />
-                <time class="activity-card__date" datetime="2026-11-07">
-                  <span>Nov</span><strong>07</strong>
-                </time>
-              </div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Cake &amp; Canvas</h4>
-                <p class="activity-card__time">Saturday, November 7 · 6:30–8:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Adults</li>
-                  <li>Edible Art</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-adult-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshops-adult-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/gallery-pink-floral-dream.png' ) ); ?>" alt="Pink floral cake" /><time class="activity-card__date"
-                  datetime="2026-12-05"><span>Dec</span><strong>05</strong></time></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Cake &amp; Canvas</h4>
-                <p class="activity-card__time">Saturday, December 5 · 6:30–8:30 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Adults</li>
-                  <li>Cake Painting</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-adult-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshops-adult-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
-            <article class="activity-card activity-card--compact">
-              <div class="activity-card__media"><img class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-macarons.jpeg' ) ); ?>" alt="Edible gifts and desserts" /><time
-                  class="activity-card__date" datetime="2026-12-19"><span>Dec</span><strong>19</strong></time></div>
-              <div class="activity-card__body">
-                <h4 class="activity-card__title">Edible Gift Workshop</h4>
-                <p class="activity-card__time">Saturday, December 19 · 5:00–7:00 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Adults</li>
-                  <li>Holiday</li>
-                  <li>Edible Gifts</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="workshop-adult-details.html">Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-                  <a class="button button--outline button--compact activity-card__event-button" href="workshops-adult-registration.html">Register</a>
-                </div>
-              </div>
-            </article>
+            <?php while ( $adult_workshops->have_posts() ) : $adult_workshops->the_post(); ?>
+              <?php get_template_part( 'template-parts/adult-workshop-card' ); ?>
+            <?php endwhile; ?>
           </div>
+          <?php else : ?>
+            <p class="activity-collection__empty">New adult workshops are coming soon. Please check back for upcoming dates.</p>
+          <?php endif; wp_reset_postdata(); ?>
         </div>
       </section>
 
@@ -239,22 +88,21 @@
             <p class="eyebrow">Sweet memories</p>
             <h2 class="activity-collection__title" id="past-workshops-title">Past Events & Workshops</h2>
           </div>
-          <a class="text-link activity-collection__link" href="<?php echo esc_url( home_url( '/past-events/' ) ); ?>">View All Past Events <i
+          <a class="text-link activity-collection__link" href="<?php echo esc_url( home_url( '/past-events/' ) ); ?>">View All Past Events &amp; Workshops <i
               class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
         </header>
         <?php
-        $past_event_args = tastensee_popup_query_args( true );
-        $past_event_args['posts_per_page'] = 3;
+        $past_event_args = tastensee_past_activity_query_args( 3 );
         $past_events = new WP_Query( $past_event_args );
         ?>
         <?php if ( $past_events->have_posts() ) : ?>
           <div class="activity-collection__grid">
             <?php while ( $past_events->have_posts() ) : $past_events->the_post(); ?>
-              <?php get_template_part( 'template-parts/popup-card', null, array( 'past' => true ) ); ?>
+              <?php get_template_part( 'template-parts/past-activity-card' ); ?>
             <?php endwhile; ?>
           </div>
         <?php else : ?>
-          <p class="activity-collection__empty">No past pop-up events to display yet. Check back soon for sweet memories!</p>
+          <p class="activity-collection__empty">No past events or workshops to display yet. Check back soon for sweet memories!</p>
         <?php endif; ?>
         <?php wp_reset_postdata(); ?>
       </section>
