@@ -1,28 +1,7 @@
 <?php get_header(); ?>
 
    <main id="main-content">
-      <section class="hero">
-        <div class="hero__inner page-shell">
-          <div class="hero__content">
-            <p class="eyebrow">How sweet it can be!</p>
-            <h1 class="hero__title">Made for you!<br />Custom Cakes &amp;<br />Desserts</h1>
-            <p class="hero__description">
-              Custom cakes, delicious desserts, and creative edible arts workshops for every celebration.
-            </p>
-            <div class="hero__actions">
-              <a class="button button--solid" href="<?php echo esc_url( home_url( '/contact' ) ); ?>">Order a Cake</a>
-              <a class="button button--outline" href="<?php echo esc_url( home_url( '/workshops-events' ) ); ?>">Join a Workshop</a>
-            </div>
-          </div>
-          <div class="hero__visual">
-            <img class="hero__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/hero-cake.png' ) ); ?>" alt="Floral custom cake displayed outdoors" />
-            <div class="hero__seal" aria-hidden="true">
-              <i class="hero__seal-heart ri-heart-line"></i>
-              <span>Made<br />for you</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <?php get_template_part( 'template-parts/home-hero' ); ?>
 
       <section class="benefits" aria-label="Why choose tasteNsee">
         <div class="benefits__grid page-shell">
@@ -126,50 +105,7 @@
         </div>
       </section>
 
-      <section class="section workshops" id="workshops">
-        <div class="workshops__grid page-shell">
-          <div class="workshops__content">
-            <p class="eyebrow">What's Happening</p>
-            <h2 class="section-heading__title">Creative Workshops <br>for Kids &amp; Adults</h2>
-            <p class="workshops__text">
-              Kids can explore playful, inclusive baking projects, while adults create beautiful edible art in our
-              relaxed Cake &amp; Canvas and seasonal workshops.
-            </p>
-            <a class="button button--solid" href="<?php echo esc_url( home_url( '/workshops-events/#workshops' ) ); ?>">View All Workshops</a>
-          </div>
-          <div class="workshops__media">
-            <a class="text-link activity-card__link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">View All Workshops for Kids & Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-            <article class="activity-card activity-card--featured">
-              <div class="activity-card__media">
-                <img
-                  class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cupcakes.jpeg' ) ); ?>"
-                  alt="Child mixing cupcake batter during a creative workshop"
-                />
-                <time class="activity-card__date" datetime="2026-10-19"><span>Oct</span><strong>19</strong></time>
-              </div>
-              <div class="activity-card__body">
-                <h3 class="activity-card__title">Halloween Cupcake Design</h3>
-                <p class="activity-card__time">Monday, October 19 · 1:00–3:00 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Cupcakes</li>
-                  <li>Halloween</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">
-                    Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                  </a>
-                  <a
-                    class="button button--outline button--compact activity-card__event-button"
-                    href="workshop-kids-registration.html"
-                  >Register</a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      <?php get_template_part( 'template-parts/home-workshops' ); ?>
 
       <section class="section section--mint events" id="events">
         <div class="page-shell">

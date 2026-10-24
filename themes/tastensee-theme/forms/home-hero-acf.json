@@ -1,0 +1,89 @@
+[
+  {
+    "key": "group_tastensee_home_hero",
+    "title": "Home Hero",
+    "fields": [
+      {
+        "key": "field_tastensee_home_hero_eyebrow",
+        "name": "home_hero_eyebrow",
+        "label": "Intro text",
+        "type": "text"
+      },
+      {
+        "key": "field_tastensee_home_hero_heading",
+        "name": "home_hero_heading",
+        "label": "Headline",
+        "type": "textarea",
+        "rows": 3,
+        "new_lines": "",
+        "instructions": "Each new line becomes a line break in the headline."
+      },
+      {
+        "key": "field_tastensee_home_hero_description",
+        "name": "home_hero_description",
+        "label": "Description",
+        "type": "textarea",
+        "rows": 3,
+        "new_lines": ""
+      },
+      {
+        "key": "field_tastensee_home_hero_primary_cta",
+        "name": "home_hero_primary_cta",
+        "label": "Primary CTA button",
+        "type": "link",
+        "return_format": "array",
+        "instructions": "Set the button text, destination and whether to open in a new tab. Clear the link to hide this button."
+      },
+      {
+        "key": "field_tastensee_home_hero_secondary_cta",
+        "name": "home_hero_secondary_cta",
+        "label": "Secondary CTA button",
+        "type": "link",
+        "return_format": "array",
+        "instructions": "Clear the link to hide this button."
+      },
+      {
+        "key": "field_tastensee_home_hero_image",
+        "name": "home_hero_image",
+        "label": "Hero image",
+        "type": "image",
+        "return_format": "id",
+        "preview_size": "medium",
+        "library": "all",
+        "instructions": "Choose a large landscape image. If empty, the original cake photo is used."
+      },
+      {
+        "key": "field_tastensee_home_hero_image_alt",
+        "name": "home_hero_image_alt",
+        "label": "Hero image alternative text",
+        "type": "text",
+        "instructions": "Describe the image for screen readers. If empty, the Media Library alternative text is used."
+      },
+      {
+        "key": "field_tastensee_home_hero_badge",
+        "name": "home_hero_badge",
+        "label": "Round badge text",
+        "type": "textarea",
+        "rows": 2,
+        "new_lines": "",
+        "instructions": "Each new line becomes a line break. Clear to hide the badge."
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "page_type",
+          "operator": "==",
+          "value": "front_page"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "description": "Edit the hero at the top of the Home page."
+  }
+]

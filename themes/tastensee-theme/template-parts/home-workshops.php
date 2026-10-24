@@ -13,35 +13,34 @@
             <a class="button button--solid" href="<?php echo esc_url( home_url( '/workshops-events/#workshops' ) ); ?>">View All Workshops</a>
           </div>
           <div class="workshops__media">
-            <a class="text-link activity-card__link" href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">View All Workshops for Kids & Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
-            <article class="activity-card activity-card--featured">
-              <div class="activity-card__media">
-                <img
-                  class="activity-card__image"
-                  src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cupcakes.jpeg' ) ); ?>"
-                  alt="Child mixing cupcake batter during a creative workshop"
-                />
-                <time class="activity-card__date" datetime="2026-10-19"><span>Oct</span><strong>19</strong></time>
-              </div>
-              <div class="activity-card__body">
-                <h3 class="activity-card__title">Halloween Cupcake Design</h3>
-                <p class="activity-card__time">Monday, October 19 · 1:00–3:00 PM</p>
-                <ul class="activity-card__tags">
-                  <li>Kids</li>
-                  <li>Cupcakes</li>
-                  <li>Halloween</li>
-                </ul>
-                <div class="activity-card__actions">
-                  <a class="activity-card__read-more" href="<?php echo esc_url( home_url( '/workshop-details/' ) ); ?>">
-                    Read More <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
-                  </a>
-                  <a
-                    class="button button--outline button--compact activity-card__event-button"
-                    href="<?php echo esc_url( home_url( '/workshop-kids-registration/' ) ); ?>"
-                  >Register</a>
-                </div>
-              </div>
-            </article>
+            <a class="text-link activity-card__link" href="<?php echo esc_url( home_url( '/workshops-events/#workshops' ) ); ?>">View All Workshops for Kids &amp; Adults <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+            <?php
+            // Show the two most recently published upcoming workshops across both tracks.
+            $today = current_datetime()->format( 'Ymd' );
+            $home_workshops = new WP_Query( array(
+                'post_type'           => array( 'kids_workshop', 'adult_workshop' ),
+                'post_status'         => 'publish',
+                'posts_per_page'      => 2,
+                'orderby'            => array( 'date' => 'DESC', 'ID' => 'DESC' ),
+                'ignore_sticky_posts' => true,
+                'no_found_rows'       => true,
+                'meta_query'         => array(
+                    'relation' => 'OR',
+                    array( 'key' => 'kids_workshop_date', 'value' => $today, 'compare' => '>=', 'type' => 'NUMERIC' ),
+                    array( 'key' => 'adult_workshop_date', 'value' => $today, 'compare' => '>=', 'type' => 'NUMERIC' ),
+                ),
+            ) );
+            ?>
+            <div class="workshops__cards">
+              <?php if ( $home_workshops->have_posts() ) : ?>
+                <?php while ( $home_workshops->have_posts() ) : $home_workshops->the_post(); ?>
+                  <?php get_template_part( 'template-parts/' . ( 'kids_workshop' === get_post_type() ? 'kids' : 'adult' ) . '-workshop-card', null, array( 'featured' => true ) ); ?>
+                <?php endwhile; ?>
+              <?php else : ?>
+                <p class="activity-collection__empty">New workshops are coming soon. Please check back for upcoming dates.</p>
+              <?php endif; ?>
+              <?php wp_reset_postdata(); ?>
+            </div>
           </div>
         </div>
       </section>

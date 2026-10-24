@@ -1256,6 +1256,12 @@ textarea:focus-visible {
   display: grid;
 }
 
+.workshops__cards {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
 .workshops__more {
   justify-self: end;
   margin-bottom: 20px;
