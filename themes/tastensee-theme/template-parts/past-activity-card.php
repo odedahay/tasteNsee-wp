@@ -8,7 +8,7 @@ if ( 'popup' === $past_type ) {
 $past_is_kids = 'kids_workshop' === $past_type;
 $past_details = $past_is_kids ? tastensee_kids_details( get_the_ID() ) : tastensee_adult_details( get_the_ID() );
 $past_label = $past_is_kids ? 'Kids Workshop' : 'Adult Workshop';
-$past_fallback = $past_is_kids ? 'assets/workshop-event-cupcakes.jpeg' : 'assets/workshop-event-cake.jpeg';
+$past_fallback = 'assets/workshop-placeholder.svg';
 ?>
 <article class="activity-card activity-card--compact">
   <div class="activity-card__media">

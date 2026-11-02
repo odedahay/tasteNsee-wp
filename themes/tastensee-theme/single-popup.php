@@ -16,6 +16,8 @@ get_header();
         <article class="event-detail__article">
           <?php if ( has_post_thumbnail() ) : ?>
             <?php the_post_thumbnail( 'full', array( 'class' => 'event-detail__image' ) ); ?>
+          <?php else : ?>
+            <img class="event-detail__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/market-placeholder.svg' ) ); ?>" alt="" />
           <?php endif; ?>
           <?php if ( $market['date'] && $market['date']->format( 'Ymd' ) < current_datetime()->format( 'Ymd' ) ) : ?>
             <p class="event-detail__intro">This market has ended. Find our next dates on the <a href="<?php echo esc_url( home_url( '/workshops-events/#markets' ) ); ?>">Pop-Up Markets listing</a>.</p>

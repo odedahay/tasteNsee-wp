@@ -9,7 +9,7 @@ $open = tastensee_kids_available( get_the_ID() );
     <?php if ( has_post_thumbnail() ) : ?>
       <?php the_post_thumbnail( 'large', array( 'class' => 'activity-card__image' ) ); ?>
     <?php else : ?>
-      <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-event-cupcakes.jpeg' ) ); ?>" alt="Creative kids workshop" loading="lazy" />
+      <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/workshop-placeholder.svg' ) ); ?>" alt="" loading="lazy" />
     <?php endif; ?>
     <?php if ( $d['date'] ) : ?>
       <time class="activity-card__date" datetime="<?php echo esc_attr( $d['date']->format( 'Y-m-d' ) ); ?>"><span><?php echo esc_html( wp_date( 'M', $d['date']->getTimestamp() ) ); ?></span><strong><?php echo esc_html( $d['date']->format( 'd' ) ); ?></strong></time>

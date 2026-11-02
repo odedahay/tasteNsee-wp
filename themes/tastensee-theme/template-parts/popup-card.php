@@ -8,7 +8,7 @@ $past = ! empty( $args['past'] );
                   <?php if ( has_post_thumbnail() ) : ?>
                     <?php the_post_thumbnail( 'large', array( 'class' => 'activity-card__image' ) ); ?>
                   <?php else : ?>
-                    <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/blog-market.png' ) ); ?>" alt="" loading="lazy" />
+                    <img class="activity-card__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/market-placeholder.svg' ) ); ?>" alt="" loading="lazy" />
                   <?php endif; ?>
                   <?php if ( $market['date'] ) : ?>
                     <time class="activity-card__date" datetime="<?php echo esc_attr( $market['date']->format( 'Y-m-d' ) ); ?>">

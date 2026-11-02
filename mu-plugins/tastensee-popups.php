@@ -29,6 +29,27 @@ function tastensee_register_popups() {
 }
 add_action( 'init', 'tastensee_register_popups' );
 
+function tastensee_popup_admin_columns( $columns ) {
+    $updated = array();
+    foreach ( $columns as $key => $label ) {
+        $updated[ $key ] = $label;
+        if ( 'title' === $key ) {
+            $updated['tastensee_market_date'] = __( 'Market Date', 'tastensee' );
+        }
+    }
+    return $updated;
+}
+add_filter( 'manage_popup_posts_columns', 'tastensee_popup_admin_columns' );
+
+function tastensee_popup_admin_column_content( $column, $post_id ) {
+    if ( 'tastensee_market_date' !== $column ) {
+        return;
+    }
+    $details = tastensee_popup_details( $post_id );
+    echo esc_html( $details['date'] ? wp_date( get_option( 'date_format' ), $details['date']->getTimestamp() ) : '—' );
+}
+add_action( 'manage_popup_posts_custom_column', 'tastensee_popup_admin_column_content', 10, 2 );
+
 // Market Details is managed in ACF → Field Groups. Keep the field names and keys stable.
 
 /** ACF stores date-picker values as Ymd, independently of their display format. */

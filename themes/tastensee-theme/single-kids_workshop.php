@@ -60,7 +60,7 @@ get_header();
     </nav>
 
     <section class="workshop-detail-hero page-shell" aria-labelledby="workshop-detail-title">
-        <img class="workshop-detail-hero__image" src="<?php echo esc_url(get_the_post_thumbnail_url($kids_detail_id, 'large') ?: get_theme_file_uri('assets/workshop-details-hero.jpg')); ?>" alt="<?php echo esc_attr($kids_image_alt); ?>" />
+        <img class="workshop-detail-hero__image" src="<?php echo esc_url(get_the_post_thumbnail_url($kids_detail_id, 'large') ?: get_theme_file_uri('assets/workshop-placeholder.svg')); ?>" alt="<?php echo esc_attr($kids_image_id ? $kids_image_alt : ''); ?>" />
         <div class="workshop-detail-hero__overlay" aria-hidden="true"></div>
         <!-- <div class="workshop-detail-hero__status">
           <span>All abilities</span><strong>8 spots left</strong>
