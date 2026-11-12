@@ -60,15 +60,15 @@ $more_active = $about_active || $blog_active || $testimonials_active;
           </div>
           <a class="site-header__nav-link <?php echo $contact_active ? 'site-header__nav-link--active' : ''; ?>" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" <?php if ( $contact_active ) : ?>aria-current="page"<?php endif; ?>>Contact</a>
           <div class="site-header__actions site-header__actions--mobile">
-            <a class="site-header__social" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
-            <a class="site-header__social" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+            <a class="site-header__social" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
+            <a class="site-header__social" href="<?php echo esc_url( 'https://www.facebook.com/tastensee82' ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
             <a class="button button--small button--solid" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Inquire Now</a>
           </div>
         </nav>
 
         <div class="site-header__actions">
-          <a class="site-header__social" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
-          <a class="site-header__social" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
+          <a class="site-header__social" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>" aria-label="Instagram"><i class="ri-instagram-line" aria-hidden="true"></i></a>
+          <a class="site-header__social" href="<?php echo esc_url( 'https://www.facebook.com/tastensee82' ); ?>" aria-label="Facebook"><i class="ri-facebook-fill" aria-hidden="true"></i></a>
           <a class="button button--small button--solid" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Inquire Now</a>
         </div>
       </div>

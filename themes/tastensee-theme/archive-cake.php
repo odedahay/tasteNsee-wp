@@ -39,25 +39,41 @@ usort($categories, static function ($a, $b) use ($category_order) {
                         $slugs = wp_list_pluck($cake_terms, 'slug');
                         $category_label = implode(', ', wp_list_pluck($cake_terms, 'name'));
                         $category_slug = $slugs ? $slugs[0] : 'uncategorized';
+                        $cake_title = get_the_title();
                         $image_id = get_post_thumbnail_id();
                         $image_url = wp_get_attachment_image_url($image_id, 'full');
+                        $content = get_post_field('post_content', get_the_ID(), 'raw');
+                        $description = '';
+                        if ($image_url && ! post_password_required() && '' !== trim($content)) {
+                            $description = trim(wp_kses_post(apply_filters('the_content', $content)));
+                        }
+                        $description_id = 'cake-description-' . get_the_ID();
                     ?>
                         <button class="gallery-card" type="button"
                             data-category="<?php echo esc_attr(implode(' ', $slugs)); ?>"
-                            data-gallery-title="<?php echo esc_attr(get_the_title()); ?>"
+                            data-gallery-title="<?php echo esc_attr($cake_title); ?>"
                             data-gallery-category="<?php echo esc_attr($category_label); ?>"
+                            <?php if ('' !== $description) : ?>
+                                data-gallery-description="<?php echo esc_attr($description_id); ?>"
+                            <?php endif; ?>
                             data-gallery-image="<?php echo esc_url($image_url ?: ''); ?>"
-                            aria-label="<?php echo esc_attr(sprintf(__('View %s', 'tastensee'), get_the_title())); ?>"
+                            aria-label="<?php echo esc_attr(sprintf(__('View %s', 'tastensee'), $cake_title)); ?>"
                             aria-haspopup="dialog" aria-controls="gallery-modal" <?php disabled(! $image_url); ?>>
-                            <?php if ($image_url) : ?>
-                                <?php echo wp_get_attachment_image($image_id, 'large', false, array('class' => 'gallery-card__image', 'alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true) ?: get_the_title())); ?>
-                            <?php else : ?>
-                                <span class="gallery-card__placeholder"><?php esc_html_e('Cake image coming soon', 'tastensee'); ?></span>
-                            <?php endif; ?>
-                            <?php if ($category_label) : ?>
-                                <span class="gallery-card__tag gallery-card__tag--<?php echo esc_attr($category_slug); ?>"><?php echo esc_html($category_label); ?></span>
-                            <?php endif; ?>
+                            <span class="gallery-card__title"><?php echo esc_html($cake_title); ?></span>
+                            <span class="gallery-card__media">
+                                <?php if ($image_url) : ?>
+                                    <?php echo wp_get_attachment_image($image_id, 'large', false, array('class' => 'gallery-card__image', 'alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true) ?: $cake_title)); ?>
+                                <?php else : ?>
+                                    <?php get_template_part('template-parts/cake-image-placeholder'); ?>
+                                <?php endif; ?>
+                                <?php if ($category_label) : ?>
+                                    <span class="gallery-card__tag gallery-card__tag--<?php echo esc_attr($category_slug); ?>"><?php echo esc_html($category_label); ?></span>
+                                <?php endif; ?>
+                            </span>
                         </button>
+                        <?php if ('' !== $description) : ?>
+                            <template id="<?php echo esc_attr($description_id); ?>"><?php echo $description; ?></template>
+                        <?php endif; ?>
                     <?php endwhile; ?>
                     <?php if (0 === $wp_query->post_count) : ?>
                         <p class="gallery-catalog__empty"><?php esc_html_e('Our cake collection is coming soon. Please check back for our latest creations.', 'tastensee'); ?></p>

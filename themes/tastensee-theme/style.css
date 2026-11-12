@@ -1105,7 +1105,8 @@ textarea:focus-visible {
   flex-direction: column;
 }
 
-.creations__grid--custom .photo-modal-trigger {
+.creations__grid--custom .photo-modal-trigger,
+.creations__grid--custom .cake-image-placeholder {
   aspect-ratio: 4 / 3;
   overflow: hidden;
 }
@@ -1238,9 +1239,9 @@ textarea:focus-visible {
 
 .workshops__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
   align-items: center;
-  gap: 48px;
+  gap: clamp(24px, 4vw, 48px);
 }
 
 .workshops__content {
@@ -1258,8 +1259,23 @@ textarea:focus-visible {
 
 .workshops__cards {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 24px;
   min-width: 0;
+}
+
+.workshops__cards .activity-collection__empty {
+  grid-column: 1 / -1;
+}
+
+.workshops__cards .activity-card__actions {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .workshops__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .workshops__more {
@@ -1942,8 +1958,7 @@ textarea:focus-visible {
   }
 
   .hero__inner,
-  .about__grid,
-  .workshops__grid {
+  .about__grid {
     grid-template-columns: 1fr;
   }
 
@@ -3739,16 +3754,32 @@ textarea:focus-visible {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  padding-top: 24px;
+  padding-top: 8px;
 }
 
 .gallery-card {
+  display: grid;
+  align-self: start;
+  gap: 6px;
+  margin: 0;
   padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
   cursor: pointer;
+  font: inherit;
   text-align: left;
+}
+
+.gallery-card__title {
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.gallery-card__media {
   position: relative;
   height: 222px;
-  margin: 0;
   overflow: hidden;
   background: var(--color-mint-strong);
   border: 1px solid var(--color-line);
@@ -3763,12 +3794,24 @@ textarea:focus-visible {
   cursor: default;
 }
 
-.gallery-card__placeholder {
+.cake-image-placeholder {
   display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #e8e8e8;
+  color: #575757;
+  text-align: center;
+}
+
+.cake-image-placeholder i {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.gallery-card__media .cake-image-placeholder {
   height: 100%;
-  padding: 24px;
-  place-items: center;
-  color: var(--color-purple);
 }
 
 .gallery-card:focus-visible {
@@ -3848,6 +3891,50 @@ body.is-gallery-modal-open {
   background: var(--color-white);
 }
 
+.gallery-modal--with-description {
+  width: min(960px, calc(100% - 32px));
+}
+
+.gallery-modal--with-description .gallery-modal__body {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  background: var(--color-white);
+  border-top: 1px solid var(--color-line);
+}
+
+.gallery-modal__description {
+  margin: 0;
+  padding: clamp(24px, 4vw, 40px);
+  border-inline-start: 1px solid var(--color-line);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.gallery-modal__description > :first-child {
+  margin-block-start: 0;
+}
+
+.gallery-modal__description > :last-child {
+  margin-block-end: 0;
+}
+
+@media (max-width: 700px) {
+  .gallery-modal--with-description .gallery-modal__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gallery-modal--with-description .gallery-modal__image {
+    max-height: 55dvh;
+  }
+
+  .gallery-modal__description {
+    padding: 20px 24px;
+    border-inline-start: 0;
+    border-top: 1px solid var(--color-line);
+  }
+}
+
 @keyframes gallery-modal-enter {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
@@ -3858,8 +3945,9 @@ body.is-gallery-modal-open {
 }
 
 .gallery-card__image {
+  display: block;
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
   transition: transform 240ms ease;
 }
@@ -4436,12 +4524,8 @@ body.is-gallery-modal-open {
     grid-template-columns: 1fr;
   }
 
-  .gallery-card {
+  .gallery-card__media {
     height: 250px;
-  }
-
-  .gallery-card__image {
-    height: 248px;
   }
 
   .gallery-cta {

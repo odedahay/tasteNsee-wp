@@ -125,6 +125,7 @@ if (galleryModal) {
   const modalImage = galleryModal.querySelector('[data-gallery-modal-image]');
   const modalTitle = galleryModal.querySelector('.gallery-modal__title');
   const modalCategory = galleryModal.querySelector('[data-gallery-modal-category]');
+  const modalDescription = galleryModal.querySelector('#gallery-modal-description');
 
   document.querySelectorAll('[data-gallery-title]').forEach((card) => {
     card.addEventListener('click', () => {
@@ -134,7 +135,24 @@ if (galleryModal) {
       modalImage.alt = photo.alt;
       modalTitle.textContent = card.dataset.galleryTitle;
       modalCategory.textContent = card.dataset.galleryCategory || card.querySelector('.gallery-card__tag')?.textContent || '';
+      if (modalDescription) {
+        const descriptionId = card.dataset.galleryDescription;
+        const description = descriptionId ? document.getElementById(descriptionId) : null;
+        modalDescription.replaceChildren();
+        if (description) {
+          modalDescription.append(description.content.cloneNode(true));
+        }
+        modalDescription.hidden = !description;
+        galleryModal.classList.toggle('gallery-modal--with-description', Boolean(description));
+
+        if (description) {
+          galleryModal.setAttribute('aria-describedby', modalDescription.id);
+        } else {
+          galleryModal.removeAttribute('aria-describedby');
+        }
+      }
       galleryModal.showModal();
+      galleryModal.scrollTop = 0;
       document.body.classList.add('is-gallery-modal-open');
     });
   });

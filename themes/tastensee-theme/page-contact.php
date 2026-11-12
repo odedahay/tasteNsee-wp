@@ -44,9 +44,9 @@ $thank_you_url = $thank_you_page ? get_permalink( $thank_you_page ) : home_url( 
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-email.svg' ) ); ?>" alt="" />
                     <span><strong>Email</strong><small>tastensee82@gmail.com</small></span>
                   </a>
-                  <a class="contact-reach-card__item" href="index.html#instagram">
+                  <a class="contact-reach-card__item" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-instagram.svg' ) ); ?>" alt="" />
-                    <span><strong>Instagram</strong><small>@tatsensee82</small></span>
+                    <span><strong>Instagram</strong><small>@tastensee82</small></span>
                   </a>
                   <div class="contact-reach-card__item contact-reach-card__item--hours">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-hours.svg' ) ); ?>" alt="" />

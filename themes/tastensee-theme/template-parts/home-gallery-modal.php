@@ -8,11 +8,14 @@
             <p class="gallery-modal__category" data-gallery-modal-category></p>
             <h2 class="gallery-modal__title" id="gallery-modal-title"></h2>
           </div>
-          <button class="gallery-modal__close" type="button" aria-label="Close photo" autofocus>
+          <button class="gallery-modal__close" type="button" aria-label="<?php esc_attr_e('Close cake details', 'tastensee'); ?>" autofocus>
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <img class="gallery-modal__image" data-gallery-modal-image alt="" />
+        <div class="gallery-modal__body">
+          <img class="gallery-modal__image" data-gallery-modal-image alt="" />
+          <div class="gallery-modal__description" id="gallery-modal-description" hidden></div>
+        </div>
       </div>
     </dialog>
 

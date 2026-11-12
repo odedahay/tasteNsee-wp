@@ -8,7 +8,7 @@
               <h2 class="instagram__title">Follow Our Sweet Creations</h2>
               <p class="eyebrow">@tastensee82</p>
             </div>
-            <a class="text-link" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>">Follow Us on Instagram <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
+            <a class="text-link" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>">Follow Us on Instagram <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>
           </div>
           <div class="instagram__grid">
             <button class="photo-modal-trigger" type="button" data-gallery-title="Chocolate cake creation" data-gallery-category="Sweet Creations" aria-label="View Chocolate cake creation photo" aria-haspopup="dialog" aria-controls="gallery-modal"><img class="instagram__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/instagram-1.png' ) ); ?>" alt="Chocolate cake creation" /></button>

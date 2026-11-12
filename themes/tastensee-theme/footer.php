@@ -8,8 +8,8 @@
             <img class="site-footer__logo" src="<?php echo esc_url( get_theme_file_uri( 'assets/tastensee-logo.svg' ) ); ?>" alt="tasteNsee" />
             <p class="site-footer__summary">Custom cakes &amp; desserts, kids and adult creative workshop, dessert tables and edible gifts</p>
             <div class="site-footer__socials">
-              <a class="site-footer__social" href="<?php echo esc_url( home_url( '/#instagram' ) ); ?>" aria-label="Instagram"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon-instagram.svg' ) ); ?>" alt="" /></a>
-              <a class="site-footer__social" href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" aria-label="Facebook"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon-facebook.svg' ) ); ?>" alt="" /></a>
+              <a class="site-footer__social" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>" aria-label="Instagram"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon-instagram.svg' ) ); ?>" alt="" /></a>
+              <a class="site-footer__social" href="<?php echo esc_url( 'https://www.facebook.com/tastensee82' ); ?>" aria-label="Facebook"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon-facebook.svg' ) ); ?>" alt="" /></a>
             </div>
           </div>
 
@@ -24,18 +24,20 @@
 
           <nav class="site-footer__column" aria-label="Customer care links">
             <h2 class="site-footer__heading">Customer Care</h2>
-            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">FAQ</a>
+            <!-- <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">FAQ</a>
             <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Ordering &amp; Pricing</a>
             <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Payment &amp; Delivery</a>
-            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Returns &amp; Refunds</a>
+            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Returns &amp; Refunds</a> -->
             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a>
-          </nav>
-
-          <div class="site-footer__column">
+            <br>
             <h2 class="site-footer__heading">Contact Us</h2>
             <a href="tel:+12049638496">204-963-8496</a>
             <a href="mailto:tastensee82@gmail.com">tastensee82@gmail.com</a>
             <address class="site-footer__address">1-204-963-8496 at 270 Sora Way SE<br />Calgary AB</address>
+          </nav>
+
+          <div class="site-footer__column">
+            
             <h2 class="site-footer__heading site-footer__heading--spaced">Business Hours</h2>
             <p class="site-footer__hours">Mon – Fri: 10:00 AM – 6:00 PM<br />Sat: 10:00 AM – 4:00 PM<br />Sun: Closed</p>
           </div>

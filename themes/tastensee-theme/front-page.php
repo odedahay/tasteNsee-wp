@@ -49,23 +49,27 @@
                 'orderby' => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
                 'meta_query' => array(
                     array( 'key' => '_tastensee_cake_featured', 'value' => '1' ),
-                    array( 'key' => '_thumbnail_id', 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ),
                 ),
             ) );
             while ( $featured_cakes->have_posts() ) : $featured_cakes->the_post();
                 $cake_terms = get_the_terms( get_the_ID(), 'cake_category' );
                 $category_label = is_array( $cake_terms ) ? implode( ', ', wp_list_pluck( $cake_terms, 'name' ) ) : __( 'Custom Cakes', 'tastensee' );
                 $image_id = get_post_thumbnail_id();
+                $image_url = wp_get_attachment_image_url( $image_id, 'full' );
                 ?>
             <article class="product-card">
-              <button class="photo-modal-trigger" type="button"
-                data-gallery-title="<?php echo esc_attr( get_the_title() ); ?>"
-                data-gallery-category="<?php echo esc_attr( $category_label ); ?>"
-                data-gallery-image="<?php echo esc_url( wp_get_attachment_image_url( $image_id, 'full' ) ); ?>"
-                aria-label="<?php echo esc_attr( sprintf( __( 'View %s photo', 'tastensee' ), get_the_title() ) ); ?>"
-                aria-haspopup="dialog" aria-controls="gallery-modal">
-                <?php echo wp_get_attachment_image( $image_id, 'large', false, array( 'class' => 'product-card__image', 'alt' => get_post_meta( $image_id, '_wp_attachment_image_alt', true ) ?: get_the_title() ) ); ?>
-              </button>
+              <?php if ( $image_url ) : ?>
+                <button class="photo-modal-trigger" type="button"
+                  data-gallery-title="<?php echo esc_attr( get_the_title() ); ?>"
+                  data-gallery-category="<?php echo esc_attr( $category_label ); ?>"
+                  data-gallery-image="<?php echo esc_url( $image_url ); ?>"
+                  aria-label="<?php echo esc_attr( sprintf( __( 'View %s photo', 'tastensee' ), get_the_title() ) ); ?>"
+                  aria-haspopup="dialog" aria-controls="gallery-modal">
+                  <?php echo wp_get_attachment_image( $image_id, 'large', false, array( 'class' => 'product-card__image', 'alt' => get_post_meta( $image_id, '_wp_attachment_image_alt', true ) ?: get_the_title() ) ); ?>
+                </button>
+              <?php else : ?>
+                <?php get_template_part( 'template-parts/cake-image-placeholder' ); ?>
+              <?php endif; ?>
               <div class="product-card__body">
                 <h3 class="product-card__title"><?php the_title(); ?></h3>
                 <a class="product-card__link" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Order Inquiry <i class="ri-arrow-right-s-line" aria-hidden="true"></i></a>

@@ -62,7 +62,7 @@ function tastensee_cake_featured_field( $post ) {
         <input id="tastensee-cake-featured" type="checkbox" name="tastensee_cake_featured" value="1" <?php checked( get_post_meta( $post->ID, '_tastensee_cake_featured', true ), '1' ); ?> />
         <?php esc_html_e( 'Featured on homepage', 'tastensee' ); ?>
     </label>
-    <p><?php esc_html_e( 'Shows under “Order a Custom Cake”. Upload a cake image first. Up to 10 featured cakes appear, sorted by Order, then title.', 'tastensee' ); ?></p>
+    <p><?php esc_html_e( 'Shows under “Order a Custom Cake”. Cakes without an image display a gray placeholder. Up to 10 featured cakes appear, sorted by Order, then title.', 'tastensee' ); ?></p>
     <?php
 }
 
