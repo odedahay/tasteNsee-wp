@@ -100,8 +100,8 @@ usort($categories, static function ($a, $b) use ($category_order) {
                 </div>
                 <div class="gallery-sidebar__actions">
                     <h2>Quick actions</h2>
-                    <a class="gallery-sidebar__button gallery-sidebar__button--primary" href="<?php echo esc_url(home_url('/consultation/')); ?>">Order a Custom Cake</a>
-                    <a class="gallery-sidebar__button gallery-sidebar__button--outline" href="<?php echo esc_url(home_url('/contact/')); ?>">Inquire Now</a>
+                    <a class="gallery-sidebar__button gallery-sidebar__button--primary" href="<?php echo esc_url(home_url('/contact/')); ?>">Order a Custom Cake</a>
+                    <a class="gallery-sidebar__button gallery-sidebar__button--outline" href="<?php echo esc_url(home_url('/inquire/')); ?>">Inquire Now</a>
                     <a class="gallery-sidebar__question" href="<?php echo esc_url(home_url('/contact/')); ?>">Ask a question <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
                 </div>
             </aside>

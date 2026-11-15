@@ -26,7 +26,9 @@ $thank_you_url = $thank_you_page ? get_permalink( $thank_you_page ) : home_url( 
                 </div>
                 <h2>Looking for a custom cake?</h2>
                 <p class="contact-panel__intro">Tells about your date, serving, flavour and design ideas.</p>
-                <a class="contact-inquiry-card__button" href="consultation.html">
+
+                <a class="contact-inquiry-card__button" href="<?php echo esc_url(home_url('/inquire/')); ?>">
+
                   Start a Cake Inquiry <i class="ri-arrow-right-line" aria-hidden="true"></i>
                 </a>
               </section>
@@ -44,10 +46,12 @@ $thank_you_url = $thank_you_page ? get_permalink( $thank_you_page ) : home_url( 
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-email.svg' ) ); ?>" alt="" />
                     <span><strong>Email</strong><small>tastensee82@gmail.com</small></span>
                   </a>
+                  
                   <a class="contact-reach-card__item" href="<?php echo esc_url( 'https://www.instagram.com/tastensee82' ); ?>">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-instagram.svg' ) ); ?>" alt="" />
                     <span><strong>Instagram</strong><small>@tastensee82</small></span>
                   </a>
+
                   <div class="contact-reach-card__item contact-reach-card__item--hours">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'assets/contact-card-hours.svg' ) ); ?>" alt="" />
                     <span>
@@ -60,7 +64,7 @@ $thank_you_url = $thank_you_page ? get_permalink( $thank_you_page ) : home_url( 
             </aside>
           </div>
 
-          <a class="contact__back" href="index.html"><i class="ri-arrow-left-line" aria-hidden="true"></i>Back to home</a>
+          <a class="contact__back" href="<?php echo esc_url(home_url('/')); ?>"><i class="ri-arrow-left-line" aria-hidden="true"></i>Back to home</a>
         </div>
       </section>
     </main>
