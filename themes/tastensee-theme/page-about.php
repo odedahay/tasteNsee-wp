@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <main id="main-content">
       <section class="about-hero">
-        <img class="about-hero__background" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-hero.png' ) ); ?>" alt="" />
+        <img class="about-hero__background" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-hero.jpg' ) ); ?>" alt="" />
         <div class="about-hero__inner page-shell">
           <div class="about-hero__content">
             <p class="eyebrow">How sweet it can be!</p>
@@ -26,8 +26,8 @@
               </p>
             </div>
             <div class="about-hero__actions">
-              <a class="button button--solid about-hero__button" href="consultation.html">Order a Cake</a>
-              <a class="button button--outline about-hero__button" href="workshops-events.html">Join a Workshop</a>
+              <a class="button button--solid about-hero__button" href="<?php echo esc_url( home_url( '/inquire/' ) ); ?>">Order a Cake</a>
+              <a class="button button--outline about-hero__button" href="<?php echo esc_url( home_url( '/workshops-events/#workshops' ) ); ?>">Join a Workshop</a>
             </div>
           </div>
           <div class="about-hero__seal" aria-hidden="true">
@@ -40,10 +40,10 @@
       <section class="journey section" aria-labelledby="journey-title">
         <div class="journey__grid page-shell">
           <div class="journey__collage">
-            <img class="journey__image journey__image--main" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-main.png' ) ); ?>" alt="Cake designer adding finishing touches to a floral cake" />
+            <img class="journey__image journey__image--main" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-main.jpg' ) ); ?>" alt="Cake designer adding finishing touches to a floral cake" />
             <div class="journey__stack">
-              <img class="journey__image journey__image--top" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-top.png' ) ); ?>" alt="Cake designer working in her kitchen" />
-              <img class="journey__image journey__image--bottom" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-bottom.png' ) ); ?>" alt="Children taking part in a creative cake workshop" />
+              <img class="journey__image journey__image--top" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-top.jpg' ) ); ?>" alt="Cake designer working in her kitchen" />
+              <img class="journey__image journey__image--bottom" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-journey-bottom.jpg' ) ); ?>" alt="Children taking part in a creative cake workshop" />
             </div>
           </div>
           <div class="journey__content">
@@ -111,7 +111,7 @@
             </ul>
           </div>
           <div class="credentials__media">
-            <img class="credentials__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-profile.png' ) ); ?>" alt="The tasteNsee founder in her bakery" />
+            <img class="credentials__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-profile.jpg' ) ); ?>" alt="The tasteNsee founder in her bakery" />
           </div>
         </div>
       </section>

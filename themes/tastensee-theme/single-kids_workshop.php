@@ -147,9 +147,11 @@ get_header();
 
             <aside class="workshop-booking" aria-label="Book this workshop">
                 <div class="workshop-booking__card">
+                    <?php if ('' === $kids_detail['price'] || 0.0 !== (float) $kids_detail['price']) : ?>
                     <header class="workshop-booking__price">
                         <span>Workshop fee</span><strong><?php echo esc_html('' !== $kids_detail['price'] ? 'CAD $' . number_format((float) $kids_detail['price'], 2) : 'Contact us'); ?></strong><small>per person · all materials included</small>
                     </header>
+                    <?php endif; ?>
                     <div class="workshop-booking__body">
                         <div class="workshop-booking__date">
                             <?php if ($kids_detail['date']) : ?><time datetime="<?php echo esc_attr($kids_detail['date']->format('Y-m-d')); ?>"><span><?php echo esc_html(wp_date('M', $kids_detail['date']->getTimestamp())); ?></span><strong><?php echo esc_html($kids_detail['date']->format('d')); ?></strong></time><?php endif; ?>

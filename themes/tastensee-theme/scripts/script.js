@@ -216,10 +216,66 @@ document.querySelectorAll('[data-faq-trigger]').forEach((trigger) => {
 const copyLinkButtons = [...document.querySelectorAll('[data-copy-link]')];
 const copyMessage = document.querySelector('[data-copy-message]');
 
+const eventShare = document.querySelector('[data-event-share]');
+const nativeShareButton = eventShare?.querySelector('[data-native-share]');
+
+if (nativeShareButton && typeof navigator.share === 'function') {
+  const shareData = {
+    title: eventShare.dataset.shareTitle,
+    url: eventShare.dataset.shareUrl,
+  };
+
+  if (!navigator.canShare || navigator.canShare(shareData)) {
+    nativeShareButton.hidden = false;
+    nativeShareButton.addEventListener('click', async () => {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        if (error.name !== 'AbortError' && copyMessage) {
+          copyMessage.textContent = 'Device sharing is unavailable. Choose another option above.';
+        }
+      }
+    });
+  }
+}
+
+async function copyPageLink(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    return;
+  } catch {
+    // Support pages where the Clipboard API is unavailable (such as local HTTP).
+    const field = document.createElement('textarea');
+    const previousFocus = document.activeElement;
+    field.value = url;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    try {
+      field.select();
+      if (!document.execCommand('copy')) throw new Error('Copy unavailable');
+    } finally {
+      field.remove();
+      previousFocus?.focus({ preventScroll: true });
+    }
+  }
+}
+
 copyLinkButtons.forEach((copyLinkButton) => {
+  const url = copyLinkButton.closest('[data-event-share]')?.dataset.shareUrl || window.location.href;
+  copyLinkButton.hidden = false;
+  const label = copyLinkButton.querySelector('[data-copy-label]');
+  const originalLabel = label?.textContent;
+  let resetLabelTimeout;
   copyLinkButton.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await copyPageLink(url);
+      if (label) {
+        clearTimeout(resetLabelTimeout);
+        label.textContent = 'Copied!';
+        resetLabelTimeout = setTimeout(() => { label.textContent = originalLabel; }, 3000);
+      }
       if (copyMessage) copyMessage.textContent = 'Page link copied.';
     } catch {
       if (copyMessage) copyMessage.textContent = 'Copy unavailable. Please copy the address from your browser.';

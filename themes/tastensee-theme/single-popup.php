@@ -49,12 +49,28 @@ get_header();
               <?php endif; ?>
             </dl>
           </section>
-          <div class="event-detail-meta">
-            <button class="event-detail-meta__share" type="button" data-copy-link>
+          <?php
+          $share_url   = get_permalink();
+          $share_title = wp_specialchars_decode( wp_strip_all_tags( get_the_title() ), ENT_QUOTES );
+          $share_links = array(
+            'Facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $share_url ),
+            'WhatsApp' => 'https://wa.me/?text=' . rawurlencode( $share_title . ' ' . $share_url ),
+            'Email'    => 'mailto:?subject=' . rawurlencode( $share_title ) . '&body=' . rawurlencode( $share_url ),
+          );
+          ?>
+          <details class="event-detail-meta event-detail-meta--share" data-event-share data-share-title="<?php echo esc_attr( $share_title ); ?>" data-share-url="<?php echo esc_url( $share_url ); ?>">
+            <summary class="event-detail-meta__share">
               <img src="<?php echo esc_url( get_theme_file_uri( 'assets/icon-event-share.svg' ) ); ?>" alt="" /> Share
-            </button>
-            <span class="sr-only" aria-live="polite" data-copy-message></span>
-          </div>
+            </summary>
+            <div class="event-detail-meta__share-options">
+              <button class="event-detail-meta__share" type="button" data-native-share hidden>Share via device</button>
+              <?php foreach ( $share_links as $label => $url ) : ?>
+                <a class="event-detail-meta__share" href="<?php echo esc_url( $url ); ?>"<?php if ( 'Email' !== $label ) : ?> target="_blank" rel="noopener noreferrer"<?php endif; ?>><?php echo esc_html( $label ); ?></a>
+              <?php endforeach; ?>
+              <button class="event-detail-meta__share" type="button" data-copy-link hidden><span data-copy-label>Copy link</span></button>
+            </div>
+            <p class="event-detail-meta__share-status" role="status" data-copy-message></p>
+          </details>
         </aside>
       </div>
     </section>

@@ -83,7 +83,7 @@
       <section class="section about" id="about">
         <div class="about__grid page-shell">
           <div class="about__media">
-            <img class="about__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-founder.png' ) ); ?>" alt="tasteNsee founder decorating a cake" />
+            <img class="about__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/about-founder.jpg' ) ); ?>" alt="tasteNsee founder decorating a cake" />
           </div>
           <div class="about__content">
             <p class="eyebrow">About tasteNsee</p>
